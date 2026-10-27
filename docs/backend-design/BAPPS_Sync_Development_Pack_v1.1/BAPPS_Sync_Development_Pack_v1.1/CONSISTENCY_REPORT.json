@@ -1,0 +1,35 @@
+{
+  "version": "1.1",
+  "date": "15 de julio de 2026",
+  "checks": {
+    "no_blade_livewire_as_current_stack": true,
+    "stop_run_present": true,
+    "jitter_present": true,
+    "lease_present": true,
+    "agent_syncs_present": true,
+    "coalescing_present": true,
+    "sync_success_errors_present": true,
+    "100_agents_present": true
+  },
+  "all_checks_pass": true,
+  "files": [
+    "00_README.md",
+    "01_ARCHITECTURA_Y_DECISIONES.md",
+    "02_AGENTE_PYTHON.md",
+    "03_CENTRO_LARAVEL_Y_API.md",
+    "04_CONTRATOS_Y_MAQUINAS_DE_ESTADO.md",
+    "05_MODELO_DE_DATOS.md",
+    "06_QA_Y_ESTRATEGIA_DE_PRUEBAS.md",
+    "07_ESCALABILIDAD_100_AGENTES.md",
+    "08_ROADMAP_Y_BACKLOG.md",
+    "09_PLAYBOOK_CODEX.md",
+    "10_ADR_REGISTRO_DECISIONES.md",
+    "11_CHECKLIST_ACEPTACION_MVP.md",
+    "BAPPS_SYNC_PLAN_MAESTRO_v1.1.md",
+    "REVISION_DOBLE_COHERENCIA.md",
+    "contracts/agent-config.v1.schema.json",
+    "contracts/command.v1.schema.json",
+    "contracts/event.v1.schema.json",
+    "contracts/heartbeat.v1.schema.json"
+  ]
+}

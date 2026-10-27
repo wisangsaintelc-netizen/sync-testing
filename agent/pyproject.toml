@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bapps-sync-agent"
+version = "0.7.10"
+description = "Agente Windows de BAPPS Sync"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+portable = [
+    "PyInstaller>=6.0",
+    "PyMySQL>=1.1",
+    "firebirdsql>=1.3.2",
+    "pyodbc>=5.1",
+    "cryptography>=43.0",
+    "passlib>=1.7.4",
+    "pywin32>=306; platform_system == 'Windows'",
+]
+
+[project.scripts]
+bapps-sync-agent = "bapps_sync_agent.main:main"
+bapps-sync-agent-ui = "bapps_sync_agent.ui_main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

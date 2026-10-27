@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<template id="__bundler_thumbnail" data-bg-color="#00133C">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 34l-12 16 12 16" fill="none" stroke="#56ACDE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68 34l12 16-12 16" fill="none" stroke="#56ACDE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="58" y1="28" x2="44" y2="72" stroke="#56ACDE" stroke-width="6" stroke-linecap="round"/>
+  </svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #278AC5; text-decoration: none; }
+  a:hover { color: #002B86; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+  table.doc-table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+  table.doc-table th { text-align: left; background: #F7F8FA; color: #7A828D; font-weight: 600; font-size: 10.5px; letter-spacing: 0.4px; text-transform: uppercase; padding: 8px 10px; border-bottom: 1px solid #E2E6EB; }
+  table.doc-table td { padding: 8px 10px; border-bottom: 1px solid #EDEFF2; color: #33404F; vertical-align: top; }
+  table.doc-table tr:last-child td { border-bottom: none; }
+  pre.code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; line-height: 1.55; background: #00133C; color: #9FE0C0; border-radius: 9px; padding: 13px 15px; overflow-x: auto; white-space: pre; margin: 8px 0; }
+  pre.code .k { color: #7FB8E6; }
+  code.inl { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11.5px; background: #EEF0F3; color: #002B86; padding: 1px 5px; border-radius: 4px; }
+  doc-page:not(:defined) { visibility: hidden; }
+</style>
+</helmet>
+
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" size="letter" orientation="portrait" margin="0.75in" hint-size="100%,100%">
+
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+    <div style="width:40px; height:40px; border-radius:9px; background:#00133C; display:flex; align-items:center; justify-content:center;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#56ACDE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    </div>
+    <div>
+      <h1 style="font-size:22px; font-weight:700; color:#152238; margin:0;">BAPPS Sync — Guía técnica de implementación</h1>
+      <div style="font-size:12.5px; color:#8A929C;">Contrato de API, modelo de datos y estructura de código para el frontend y el backend</div>
+    </div>
+  </div>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:14px 0 0;">
+    Documento complementario a la <em>Documentación de diseño</em>. Aquí está lo que el diseño no dice: cómo se comunican frontend y backend, qué endpoints existen, qué forma tiene cada request/response y cómo organizar el código. <strong>Principio rector: KISS.</strong> REST plano sobre JSON, sin GraphQL, sin websockets si un <span class="mono">polling</span> simple alcanza, sin abstracciones que nadie pidió. Cada decisión de aquí se puede borrar y reemplazar por algo más simple si no se está usando.
+  </p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:26px 0 4px; padding-bottom:6px; border-bottom:2px solid #00133C;">1. Principios KISS de integración</h2>
+  <ul style="font-size:12.5px; color:#33404F; line-height:1.7; margin:6px 0 0; padding-left:18px;">
+    <li><strong>El backend envía datos crudos; el frontend decide cómo se ven.</strong> El backend nunca manda colores, ni labels traducidos de estado, ni HTML. Manda la clave de estado (<span class="mono">"online"</span>, <span class="mono">"failed"</span>…) y el número/texto crudo. Todo lo visual (color de badge, formato de fecha relativa) lo resuelve el frontend con la tabla única. Esto evita duplicar la lógica de presentación en dos lados.</li>
+    <li><strong>Un solo tipo de respuesta para listados.</strong> Todos los <span class="mono">GET</span> de lista devuelven la misma envoltura <span class="mono">{ data, page, total }</span>. No hay respuestas "especiales" por vista. Aprender una, saber todas.</li>
+    <li><strong>REST por recurso, verbos HTTP estándar.</strong> <span class="mono">GET</span> lee, <span class="mono">POST</span> crea/acciona, <span class="mono">PATCH</span> edita, <span class="mono">DELETE</span> borra. Nada de <span class="mono">POST /getAgentsList</span>.</li>
+    <li><strong>Estados = enums cerrados.</strong> Los valores de <span class="mono">status</span> son un conjunto fijo (sección 4 del doc de diseño). El backend valida contra esa lista; si no coincide, es un bug del backend, no un caso a manejar en el frontend.</li>
+    <li><strong>Polling antes que realtime.</strong> El dashboard y los datos "vivos" se refrescan con un <span class="mono">GET</span> cada N segundos. Solo se pasa a SSE/WebSocket si el volumen lo exige — y hoy no lo exige.</li>
+  </ul>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">2. Convenciones de la API</h2>
+  <table class="doc-table">
+    <thead><tr><th>Tema</th><th>Regla</th></tr></thead>
+    <tbody>
+      <tr><td>Base URL</td><td><span class="mono">/api/v1</span> — versión en la ruta. Un cambio incompatible sube a <span class="mono">/api/v2</span>; el <span class="mono">v1</span> sigue vivo hasta migrar.</td></tr>
+      <tr><td>Formato</td><td>JSON en request y response. <span class="mono">Content-Type: application/json</span>. Nombres de campo en <span class="mono">snake_case</span>.</td></tr>
+      <tr><td>Auth</td><td><span class="mono">Authorization: Bearer &lt;token&gt;</span> en cada request. Login devuelve el token; el frontend lo guarda y lo adjunta. 401 → redirigir a login.</td></tr>
+      <tr><td>Fechas</td><td>El backend siempre manda <strong>ISO 8601 UTC</strong> (<span class="mono">2026-07-12T09:42:19Z</span>). El frontend formatea a relativo ("hace 12 s") o local. El backend nunca manda "hace 12 s".</td></tr>
+      <tr><td>Paginación</td><td>Query params <span class="mono">?page=1&amp;page_size=50</span>. Respuesta incluye <span class="mono">total</span> para pintar el contador y el paginador.</td></tr>
+      <tr><td>Filtros</td><td>Query params planos: <span class="mono">?status=failed&amp;search=farmacia</span>. El chip activo = un valor de <span class="mono">status</span>. El buscador = <span class="mono">search</span>.</td></tr>
+      <tr><td>Errores HTTP</td><td>Códigos estándar: 400 datos inválidos, 401 sin auth, 403 sin permiso, 404 no existe, 409 conflicto, 422 validación, 500 error servidor. Cuerpo siempre <span class="mono">{ error: { code, message } }</span>.</td></tr>
+      <tr><td>Zona horaria</td><td>Backend en UTC. La app muestra hora del navegador o una zona fija del cliente (a definir por negocio, no por código).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:16px 0 6px;">Envoltura estándar de listado</h3>
+<pre class="code">GET /api/v1/agents?page=1&amp;page_size=50&amp;status=offline&amp;search=farmacia
+
+200 OK
+{
+  "data": [ /* array de objetos del recurso */ ],
+  "page": 1,
+  "page_size": 50,
+  "total": 42
+}</pre>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:14px 0 6px;">Forma estándar de error</h3>
+<pre class="code">422 Unprocessable Entity
+{
+  "error": {
+    "code": "INVALID_CONFIG",
+    "message": "interval_seconds debe ser >= 60, se recibió 15."
+  }
+}</pre>
+  <p style="font-size:11.5px; color:#8A929C; margin:2px 0 0;">El <span class="mono">code</span> es la misma familia de códigos técnicos que ya usa la app (sección 6). El <span class="mono">message</span> es el texto técnico; el mensaje "operativo" para soporte lo mapea el frontend por código.</p>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">3. Endpoints por recurso</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 10px;">Un recurso por vista. Los <span class="mono">GET</span> de lista usan la envoltura de la sección 2; los <span class="mono">GET</span> de detalle devuelven el objeto directo (lo que consume el drawer).</p>
+  <table class="doc-table">
+    <thead><tr><th>Método + Ruta</th><th>Qué hace</th><th>Alimenta</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">GET /agents</td><td>Lista de agentes (filtros: status, search)</td><td>Vista Agentes ▸ Listado</td></tr>
+      <tr><td class="mono">GET /agents/{code}</td><td>Detalle de un agente (config, syncs, comandos, runs, timeline)</td><td>Drawer de agente</td></tr>
+      <tr><td class="mono">POST /agents/{code}/commands</td><td>Envía un comando al agente (run_now, pause_sync…)</td><td>Acciones del drawer de agente</td></tr>
+      <tr><td class="mono">PATCH /agents/{code}/syncs/{code}</td><td>Habilita/pausa o cambia intervalo de un sync asignado</td><td>Asignación de syncs</td></tr>
+      <tr><td class="mono">GET /runs</td><td>Lista de ejecuciones (filtros: status, trigger, search)</td><td>Vista Ejecuciones</td></tr>
+      <tr><td class="mono">GET /runs/{id}</td><td>Detalle de ejecución (timeline, payload, error)</td><td>Drawer de ejecución</td></tr>
+      <tr><td class="mono">POST /runs/{id}/retry</td><td>Reintenta una ejecución fallida (solo si retryable)</td><td>Botón "Reintentar" del drawer</td></tr>
+      <tr><td class="mono">GET /audit</td><td>Log de auditoría unificado (filtros: kind, search, date)</td><td>Vista Auditoría</td></tr>
+      <tr><td class="mono">GET /clients</td><td>Lista de clientes (filtros: health, search)</td><td>Vista Clientes</td></tr>
+      <tr><td class="mono">GET /clients/{name}</td><td>Detalle de cliente (agentes y runs del cliente)</td><td>Drawer de cliente</td></tr>
+      <tr><td class="mono">GET /syncs</td><td>Catálogo de sincronizadores</td><td>Vista Catálogo</td></tr>
+      <tr><td class="mono">POST /syncs</td><td>Alta de un sincronizador nuevo</td><td>Drawer "Nuevo sync"</td></tr>
+      <tr><td class="mono">PATCH /syncs/{code}</td><td>Habilita/deshabilita o edita un sync del catálogo</td><td>Catálogo</td></tr>
+      <tr><td class="mono">GET /dashboard/metrics</td><td>Las 5 métricas + resúmenes del dashboard</td><td>Dashboard (polling)</td></tr>
+      <tr><td class="mono">POST /auth/login</td><td>Devuelve el token bearer</td><td>Login</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">4. Modelo de datos (payloads reales)</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 6px;">Estas son las formas exactas que hoy consume la UI. Los tipos y nombres provienen del código de la maqueta; el backend debe entregarlos tal cual (con <span class="mono">status</span> en las claves de la sección 5 y fechas en ISO — el ejemplo muestra los valores ya renderizados).</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:14px 0 4px;">4.1 Agente — <code class="inl">GET /agents/{code}</code></h3>
+<pre class="code">{
+  "code": "AGT-000142",
+  "client": "Distribuidora El Sol",
+  "machine": "SRV-VALERY-01",
+  "version": "2.4.1",
+  "status": "online",              <span class="k">// online|offline|enrolled|disabled</span>
+  "last_heartbeat": "2026-07-12T09:42:03Z",
+  "ip": "190.202.14.55",
+  "syncs_count": 4,
+  "last_error": null,              <span class="k">// código o null</span>
+  "config": {
+    "interval_seconds": 900,
+    "batch_size": 500,
+    "endpoint": "https://api.bapps.io/v1/ingest",
+    "tls": "1.3",
+    "log_level": "info"
+  },
+  "outbox": { "pending": 0, "sent": 1240, "last_sent": "2026-07-12T09:42:07Z" },
+  "syncs":    [ /* sync asignado: {code,name,interval_seconds,status} */ ],
+  "commands": [ /* ver 4.4 */ ],
+  "runs":     [ /* ver 4.2 */ ],
+  "timeline": [ { "type": "heartbeat", "detail": "v2.4.1 · outbox 0", "at": "2026-07-12T09:42:03Z" } ]
+}</pre>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:16px 0 4px;">4.2 Ejecución (run) — <code class="inl">GET /runs/{id}</code></h3>
+<pre class="code">{
+  "id": "RUN-8842",
+  "client": "Distribuidora El Sol",
+  "agent": "AGT-000142",
+  "sync": "clientes_valery",
+  "status": "success",             <span class="k">// success|running|failed|skipped</span>
+  "trigger": "schedule",           <span class="k">// schedule|manual|command</span>
+  "started_at": "2026-07-12T09:42:11Z",
+  "ended_at": "2026-07-12T09:42:19Z",   <span class="k">// null si running</span>
+  "rows_read": 1240,
+  "rows_inserted": 900,
+  "rows_updated": 340,
+  "rows_failed": 0,
+  "error": null,                   <span class="k">// código si failed/skipped</span>
+  "correlation_id": "corr-run-8842",
+  "timeline": [ { "event": "run_started", "detail": "Trigger: schedule", "at": "..." } ]
+}</pre>
+  <p style="font-size:11.5px; color:#8A929C; margin:2px 0 0;">El frontend calcula <span class="mono">duration</span> a partir de <span class="mono">started_at/ended_at</span> — el backend no la envía. El <span class="mono">payload</span> que muestra el drawer es un resumen derivado de estos mismos campos.</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:16px 0 4px;">4.3 Cliente / 4.4 Comando / 4.5 Sync del catálogo</h3>
+<pre class="code"><span class="k">// Cliente — GET /clients</span>
+{ "name": "Farmacia Vida", "system": "Profit", "agents": 1, "syncs": 2,
+  "health": "error", "last_sync": "2026-07-12T07:40:00Z", "open_errors": 2 }
+  <span class="k">// health: ok|warning|error|enrolled</span>
+
+<span class="k">// Comando — dentro del agente / POST /agents/{code}/commands</span>
+{ "id": "CMD-3390", "type": "pause_sync", "agent": "AGT-000129",
+  "by": "admin@bapps", "created_at": "...", "status": "pending",
+  "result": null, "expires_at": "2026-07-12T09:49:00Z" }
+  <span class="k">// type: run_now|pause_sync|resume_sync|refresh_config</span>
+  <span class="k">// status: pending|completed|failed|expired|skipped</span>
+
+<span class="k">// Sync del catálogo — GET /syncs</span>
+{ "name": "Ventas Profit", "code": "ventas_profit",
+  "source": "Profit / SQL Server", "min_version": "2.4.1",
+  "enabled": false, "key": "fact_num", "desc": "Facturación desde Profit." }</pre>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:16px 0 4px;">4.6 Evento de auditoría — <code class="inl">GET /audit</code></h3>
+<pre class="code">{ "id": "AUD-99117", "kind": "error", "action": "sync_error",
+  "actor": "sistema", "target": "AGT-000151", "ctx": "ventas_profit",
+  "result": "SOURCE_CONNECTION_FAILED", "at": "2026-07-12T09:38:05Z" }
+  <span class="k">// kind: command|event|error|config|auth  (define el color del ícono)</span></pre>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">5. Enums — valores válidos (fuente de verdad compartida)</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 10px;">Backend y frontend comparten estas listas. Agregar un valor requiere tocar ambos lados <em>y</em> la tabla de estado del doc de diseño. Nada fuera de estas listas es válido.</p>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Recurso</th><th>Valores permitidos</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">status</td><td>agent</td><td class="mono">online · offline · enrolled · disabled</td></tr>
+      <tr><td class="mono">status</td><td>run</td><td class="mono">success · running · failed · skipped</td></tr>
+      <tr><td class="mono">status</td><td>command</td><td class="mono">pending · completed · failed · expired · skipped</td></tr>
+      <tr><td class="mono">status / enabled</td><td>sync</td><td class="mono">enabled · disabled · paused</td></tr>
+      <tr><td class="mono">health</td><td>client</td><td class="mono">ok · warning · error · enrolled</td></tr>
+      <tr><td class="mono">trigger</td><td>run</td><td class="mono">schedule · manual · command</td></tr>
+      <tr><td class="mono">type</td><td>command</td><td class="mono">run_now · pause_sync · resume_sync · refresh_config</td></tr>
+      <tr><td class="mono">kind</td><td>audit</td><td class="mono">command · event · error · config · auth</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px; color:#8A929C; margin:8px 0 0;">Regla de resolución del frontend: <span class="mono">meta(status)</span> devuelve <span class="mono">{label, bg, fg, dot}</span>; un valor desconocido cae a "Deshabilitado" gris. Por eso un enum mal escrito por el backend se ve gris, no rompe la UI — pero es un bug a corregir.</p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">6. Códigos de error del dominio</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 10px;">El backend usa estos códigos en <span class="mono">last_error</span>, <span class="mono">run.error</span> y <span class="mono">error.code</span>. El frontend mapea cada código a su mensaje operativo, mensaje técnico y acción sugerida — el backend puede omitir esos textos y dejar que la UI los provea, o enviarlos si varían por caso.</p>
+  <table class="doc-table">
+    <thead><tr><th>Código</th><th>Reintentable</th><th>Significado (operativo)</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">SOURCE_CONNECTION_FAILED</td><td>Sí</td><td>No se pudo conectar al sistema administrativo del cliente</td></tr>
+      <tr><td class="mono">CENTRAL_API_UNAVAILABLE</td><td>Sí</td><td>El centro BAPPS no respondió al enviar el lote</td></tr>
+      <tr><td class="mono">SYNC_ALREADY_RUNNING</td><td>Sí</td><td>Se intentó ejecutar un sync que ya estaba corriendo (→ skipped)</td></tr>
+      <tr><td class="mono">SCHEMA_CHANGED</td><td>No</td><td>La estructura de la tabla origen cambió</td></tr>
+      <tr><td class="mono">AUTHENTICATION_FAILED</td><td>No</td><td>Credenciales del agente rechazadas por el centro</td></tr>
+      <tr><td class="mono">INVALID_CONFIG</td><td>No</td><td>La configuración del sync tiene un valor inválido</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px; color:#8A929C; margin:8px 0 0;"><span class="mono">retryable</span> es un dato del backend por código: gobierna si el botón "Reintentar" está activo. No lo infiere el frontend.</p>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">7. Datos vivos: polling (KISS) antes que realtime</h2>
+  <table class="doc-table">
+    <thead><tr><th>Dato</th><th>Frecuencia sugerida</th><th>Cómo</th></tr></thead>
+    <tbody>
+      <tr><td>Métricas del dashboard</td><td>cada 15 s</td><td><span class="mono">GET /dashboard/metrics</span> en un intervalo; reemplaza el estado</td></tr>
+      <tr><td>Ejecuciones "running"</td><td>cada 10 s mientras haya alguna running visible</td><td>Re-fetch de <span class="mono">GET /runs</span>; parar el intervalo si ninguna está running</td></tr>
+      <tr><td>Heartbeat de agentes</td><td>al abrir la vista + botón refrescar manual</td><td>El botón de refresco de la topbar dispara el re-fetch (ícono gira 0.9 s)</td></tr>
+      <tr><td>Estado de un comando enviado</td><td>cada 5 s hasta completed/failed/expired</td><td>Poll corto de <span class="mono">GET /agents/{code}</span> tras enviar el comando</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:#5A6472; line-height:1.6; margin:8px 0 0;">Regla KISS: <strong>empezar solo con el botón de refresco manual.</strong> Agregar polling automático vista por vista cuando se sienta la falta. Migrar a SSE/WebSocket solo si el polling genera carga real medida — no de forma preventiva.</p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">8. Estados de UI que el backend condiciona</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 8px;">El diseño documenta estados de <em>dato</em>; el frontend además debe cubrir estados de <em>red</em>. Cada listado y drawer tiene cuatro:</p>
+  <table class="doc-table">
+    <thead><tr><th>Estado</th><th>Cuándo</th><th>Qué muestra</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cargando</strong></td><td>Petición en curso</td><td>Skeleton de filas/tarjetas con la misma geometría (no spinner a pantalla completa)</td></tr>
+      <tr><td><strong>Vacío</strong></td><td><span class="mono">data: []</span> con 200 OK</td><td>Mensaje neutro centrado ("Sin agentes que coincidan"), sin color de error</td></tr>
+      <tr><td><strong>Error de red</strong></td><td>4xx/5xx o fallo de fetch</td><td>Aviso rojo con el <span class="mono">message</span> del error + botón "Reintentar"</td></tr>
+      <tr><td><strong>Sin permiso</strong></td><td>403</td><td>Ocultar la acción/vista; no mostrar datos que el rol no puede ver</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">9. Estructura de código sugerida (frontend)</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 8px;">Estructura mínima que refleja 1:1 la arquitectura de vistas del diseño. Sin capas extra "por si acaso".</p>
+<pre class="code">src/
+  api/
+    client.js         <span class="k">// fetch con baseURL + bearer; envoltura de listados</span>
+    endpoints.js      <span class="k">// una función por endpoint de la sección 3</span>
+  lib/
+    status.js         <span class="k">// meta(status) → {label,bg,fg,dot}  (tabla única)</span>
+    format.js         <span class="k">// fecha ISO → relativa, duración, números</span>
+    errors.js         <span class="k">// código → {opMsg, action, retryable}</span>
+  components/
+    StatusBadge, Table, FilterBar, Chip, Drawer, Card, Button, Notice
+  views/
+    Dashboard, Agents, Assign, Runs, Audit, Clients, Catalog
+  layout/
+    Sidebar, Topbar</pre>
+  <p style="font-size:12px; color:#5A6472; line-height:1.6; margin:8px 0 0;">
+    <strong>Tres archivos son el corazón del contrato:</strong> <span class="mono">status.js</span> (única fuente de color por estado), <span class="mono">format.js</span> (todo formateo de fecha/número vive aquí, no en las vistas) y <span class="mono">errors.js</span> (mapa código→texto). Si un color de estado o un formato de fecha aparece escrito a mano dentro de una vista, es una violación del patrón — debe salir de estos tres archivos.
+  </p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid #00133C;">10. Tokens listos para código</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 8px;">Copiar tal cual a <span class="mono">status.js</span> / variables CSS. Formato: <span class="mono">{ dot, bg, fg }</span>.</p>
+<pre class="code"><span class="k">// Marca y superficies</span>
+navy:#00133C  accent:#278AC5  deepBlue:#002B86
+appBg:#EEF0F3  surface:#FFFFFF  border:#E2E6EB  rowBorder:#EDEFF2
+text:#152238   text2:#5A6472   text3:#8A929C
+
+<span class="k">// Estados — meta(status)</span>
+online/success/completed/enabled : dot #22A366  bg #E3F3EA  fg #1B7A4B  <span class="k">// verde</span>
+offline/failed                   : dot #D64B40  bg #FBE6E4  fg #B23A31  <span class="k">// rojo</span>
+enrolled/running                 : dot #278AC5  bg #E4F0FB  fg #1E6CA8  <span class="k">// azul</span>
+skipped/pending/paused           : dot #F6921E  bg #FDEED8  fg #B26914  <span class="k">// ámbar</span>
+disabled/expired                 : dot #9AA0A7  bg #ECEDEF  fg #6A6E75  <span class="k">// gris</span>
+
+<span class="k">// Tipografía</span>
+sans: 'IBM Plex Sans'   mono: 'IBM Plex Mono'   <span class="k">// mono = todo dato de máquina</span></pre>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-top:28px; padding-top:10px; border-top:1px solid #E2E6EB; font-size:10.5px; color:#8A929C;">
+    <span>Uso interno — Equipo de desarrollo · complemento del doc de diseño</span>
+    <span>BAPPS Sync · Guía técnica v1.0 · Julio 2026</span>
+  </div>
+
+</x-import>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* ============================================================
+   BAPPS Sync — Tokens de diseño
+   Fuente: Guía Técnica §10 + Documentación de diseño §2.
+   Regla: ningún color/espaciado nuevo sin documentarlo antes.
+   ============================================================ */
+
+:root {
+    /* Marca y superficies */
+    --navy: #00133C;
+    --accent: #278AC5;
+    --deep-blue: #002B86;
+    --deep-blue-hover: #00227A;
+    --app-bg: #EEF0F3;
+    --surface: #FFFFFF;
+    --border: #E2E6EB;
+    --row-border: #EDEFF2;
+
+    /* Texto */
+    --text: #152238;
+    --text-strong: #1B2733;
+    --text-2: #5A6472;
+    --text-2b: #6A727C;
+    --text-3: #8A929C;
+    --th-text: #7A828D;
+
+    /* Estados — tríos dot / bg / fg (sistema cerrado de 5 colores) */
+    --st-green-dot: #22A366; --st-green-bg: #E3F3EA; --st-green-fg: #1B7A4B;
+    --st-red-dot: #D64B40;   --st-red-bg: #FBE6E4;   --st-red-fg: #B23A31;
+    --st-blue-dot: #278AC5;  --st-blue-bg: #E4F0FB;  --st-blue-fg: #1E6CA8;
+    --st-amber-dot: #F6921E; --st-amber-bg: #FDEED8; --st-amber-fg: #B26914;
+    --st-gray-dot: #9AA0A7;  --st-gray-bg: #ECEDEF;  --st-gray-fg: #6A6E75;
+
+    /* Bloque de código/config (navy + verde menta) */
+    --code-bg: #00133C;
+    --code-fg: #9FE0C0;
+
+    /* Aviso informativo */
+    --notice-bg: #EAF1F8;
+    --notice-border: #C9DEF0;
+    --notice-fg: #1E4C7A;
+
+    /* Interacción */
+    --row-hover: #F7FAFD;
+    --thead-bg: #F7F8FA;
+    --btn2-hover: #F1F3F6;
+    --drawer-bg: #F4F6F8;
+
+    /* Tipografía */
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+    /* Radios (fijos: no introducir intermedios) */
+    --r-control: 7px;   /* botones, inputs, chips */
+    --r-control-sm: 6px;
+    --r-card: 10px;
+    --r-card-nested: 9px;
+    --r-block: 8px;
+    --r-pill: 100px;
+
+    /* Layout */
+    --sidebar-w: 242px;
+    --topbar-h: 56px;
+    --drawer-w: 560px;
+}

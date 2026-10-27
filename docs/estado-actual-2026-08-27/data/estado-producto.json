@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "cutoff_date": "2026-08-27",
+  "repository": "C:\\Sync\\Valery\\bapps-sync",
+  "product": "BAPPS Sync",
+  "overall_status": "pilot_candidate_with_blockers",
+  "components": {
+    "center": {
+      "framework": "Laravel 13.8",
+      "php_constraint": "^8.3",
+      "auth": "Sanctum 4.3",
+      "api_routes": 31,
+      "agent_routes": 6,
+      "control_routes": 25,
+      "status": "implemented_and_tested"
+    },
+    "frontend": {
+      "framework": "React 19.2.7",
+      "typescript": "7.0.2",
+      "vite_observed": "8.1.5",
+      "status": "implemented_build_passes_typecheck_fails",
+      "typecheck_errors": 7
+    },
+    "agent": {
+      "version": "0.7.10",
+      "platform": "Windows",
+      "status": "implemented_candidate",
+      "single_worker": true,
+      "python_test_methods_present": 106,
+      "python_suite_rerun": false,
+      "portable_self_test": "passed"
+    }
+  },
+  "synchronizers": [
+    {"code": "clientes_valery", "direction": "read", "status": "implemented"},
+    {"engine": "declarative_table_reader", "direction": "read", "status": "partial"},
+    {"engine": "valery_prs_writer_v1", "direction": "write", "status": "pending_physical_acceptance"}
+  ],
+  "verification": {
+    "phpunit": {"result": "passed", "tests": 48, "assertions": 279},
+    "pint": {"result": "passed"},
+    "vite_build": {"result": "passed", "modules_transformed": 115},
+    "typescript": {"result": "failed", "errors": 7, "cause": "mock catalog objects missing direction"},
+    "python": {"result": "not_run", "cause": "repository venv references a missing interpreter"},
+    "portable_gui": {"result": "passed_exit_code_0"},
+    "portable_service": {"result": "passed"}
+  },
+  "release_artifact": {
+    "path": "agent/release/BAPPS-Sync-Setup-0.7.10.exe",
+    "bytes": 20752719,
+    "sha256": "2223C91B9E827088C458B5FB6341D13900852899D0B98750BC621D0A16E36715",
+    "authenticode": "not_signed"
+  },
+  "blockers": [
+    "physical Valery Administrator acceptance of a new PRS",
+    "mandatory signature verification for writer recipes",
+    "real RBAC for privileged control actions",
+    "Authenticode signing",
+    "green reproducible Python suite",
+    "green strict TypeScript typecheck",
+    "alignment of schemas, Laravel validation, TypeScript and Python",
+    "implementation or rejection of currently inert read-recipe options"
+  ],
+  "not_verified": [
+    "production deployment and migrations",
+    "production TLS and signing key configuration",
+    "production backups and restore",
+    "AGT-VALERY-01 installed state",
+    "real Firebird/MySQL connectivity",
+    "private orders API server",
+    "Valery Administrator functional result"
+  ]
+}

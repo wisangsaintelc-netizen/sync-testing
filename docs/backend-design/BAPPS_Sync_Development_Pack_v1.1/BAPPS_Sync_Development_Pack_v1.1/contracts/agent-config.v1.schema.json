@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAPPS Sync Agent Config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "version",
+    "agent_code",
+    "syncs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "agent_code": {
+      "type": "string"
+    },
+    "syncs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "status",
+          "interval_seconds",
+          "config"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "enabled",
+              "paused",
+              "disabled"
+            ]
+          },
+          "interval_seconds": {
+            "type": "integer",
+            "minimum": 60
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

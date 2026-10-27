@@ -1,0 +1,1725 @@
+﻿{
+    "schema_version":  "1.0",
+    "generated_at":  "2026-08-27T20:02:48.3916465Z",
+    "scope":  "Contenido previo de docs; excluye docs/estado-actual-2026-08-27.",
+    "total_files":  201,
+    "total_bytes":  440036959,
+    "by_extension":  {
+                         ".exe":  10,
+                         ".html":  7,
+                         ".ico":  5,
+                         ".ini":  8,
+                         ".jpg":  1,
+                         ".json":  12,
+                         ".md":  51,
+                         ".pkg":  4,
+                         ".py":  37,
+                         ".pyc":  29,
+                         ".pyz":  4,
+                         ".spec":  7,
+                         ".toc":  16,
+                         ".txt":  5,
+                         ".zip":  5
+                     },
+    "files":  [
+                  {
+                      "path":  "ARQUITECTURA_SINCRONIZADORES_Y_DATOS.md",
+                      "extension":  ".md",
+                      "bytes":  4231,
+                      "modified_at":  "2026-07-27T22:15:16.2049462Z",
+                      "sha256":  "86EBCCEAF94B571783FA0B81C9ACDE49DB02C940A538DBCF136AE4CB5EB5BBF1"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Architecture_Specification_v1.0 (1).md",
+                      "extension":  ".md",
+                      "bytes":  54996,
+                      "modified_at":  "2026-07-27T14:16:12.7145287Z",
+                      "sha256":  "A6D323EA2706337EF37D40784A235BD027D2AABAA59BDDB815DB52A671433AB4"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/00_README.md",
+                      "extension":  ".md",
+                      "bytes":  2005,
+                      "modified_at":  "2026-07-27T14:16:12.7128140Z",
+                      "sha256":  "635D74C11F538391F053C56FC905A05478F5DADE8C38885F36815BA0D6EDBD30"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/01_ARCHITECTURA_Y_DECISIONES.md",
+                      "extension":  ".md",
+                      "bytes":  10155,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "C50449108BB6A7DEEED80378A52DAF857A5F6ED171744220AA669FB4F9AD5E40"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/02_AGENTE_PYTHON.md",
+                      "extension":  ".md",
+                      "bytes":  11143,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "82AB198DC39E073E0240CFC97ADA6A4A2A25A8C476C53F7F64ABEDC1048D1AAB"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/03_CENTRO_LARAVEL_Y_API.md",
+                      "extension":  ".md",
+                      "bytes":  7489,
+                      "modified_at":  "2026-07-17T19:48:41.7846274Z",
+                      "sha256":  "671AD6429F4E21897C4EB9CE453E04E07DCB1AE01F1F9508FDA58F45CAF95C88"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/04_CONTRATOS_Y_MAQUINAS_DE_ESTADO.md",
+                      "extension":  ".md",
+                      "bytes":  4927,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "87F90D517848C7227FABF98EE1D461E58C72AE6920C73A21E35B1B890120C2D7"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/05_MODELO_DE_DATOS.md",
+                      "extension":  ".md",
+                      "bytes":  4562,
+                      "modified_at":  "2026-07-23T18:43:53.3784857Z",
+                      "sha256":  "4E030BC155B3D03BC86D9F9BEB10BD02484780FB926356A9B02ED57E5BFCA207"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/06_QA_Y_ESTRATEGIA_DE_PRUEBAS.md",
+                      "extension":  ".md",
+                      "bytes":  6448,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "DD831760FFCBB9CF42528B5B049B73DEFB3491B00538E6FF1C0495DC55D793AD"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/07_ESCALABILIDAD_100_AGENTES.md",
+                      "extension":  ".md",
+                      "bytes":  3304,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "5CBD9AC78CFAC79678FD9FCF8D9FE688C952246B9FAF934D131933B3239830FF"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/08_ROADMAP_Y_BACKLOG.md",
+                      "extension":  ".md",
+                      "bytes":  4827,
+                      "modified_at":  "2026-07-17T19:37:06.7444675Z",
+                      "sha256":  "E89AB08BDA3B6D33E88D7E623392B911D1E26E23D92B90D9A357DE58DDB53886"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/09_PLAYBOOK_CODEX.md",
+                      "extension":  ".md",
+                      "bytes":  3668,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "EA0AB0EA0E863DDAC6FE6B271CF00F0921F11E6136DAEF8F2B2C8E2D7491C684"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/10_ADR_REGISTRO_DECISIONES.md",
+                      "extension":  ".md",
+                      "bytes":  4663,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "29F30D6E6B36534734B2DF9552B5EBC6DA17D6E1718DE8C430E28274B58CCB85"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/11_CHECKLIST_ACEPTACION_MVP.md",
+                      "extension":  ".md",
+                      "bytes":  2573,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "ACE19804B03C7EBEF473FC3FB6B330A60C0EF6608D07B23D9B2F7EFFAE3C4987"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/12_CONTRATO_API_CONTROL_v1.md",
+                      "extension":  ".md",
+                      "bytes":  6018,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "CE5354C5C2586BBA3FF273EE0D04A9C618324ECB1A5E61AF3CDBBFD6AC06CBDF"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/BAPPS_SYNC_PLAN_MAESTRO_v1.1.md",
+                      "extension":  ".md",
+                      "bytes":  63525,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "4F964ABC420D208BF1500D841539228991DB9C6BB3047697467F2D7A1CF947F3"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/CONSISTENCY_REPORT.json",
+                      "extension":  ".json",
+                      "bytes":  1035,
+                      "modified_at":  "2026-07-15T19:48:04.0000000Z",
+                      "sha256":  "1C1B87B2980DEB2BF192B32359DC397B4BCF569B2A103C9528EB1D1B2207B7B0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/agent-config.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1099,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "C8C19B10442C6BCA55F02A3BBE02E0AD95F8341B3D3755C377E457670C1E89DA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/command.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  2758,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "6851569659DAE7DF75CB522B82DBE21C54257346AEFAB9733FBDBCCBF3D991ED"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/event.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1102,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "2F9C603ECA344B81ABC30486E77E2996CE6781697B65715251CFC792F7BB96B2"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/heartbeat.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1714,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "A19D790C1CEC76B4152B069B39575B88D016703861FFD8B6B2E27FB1788294AD"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/REVISION_DOBLE_COHERENCIA.md",
+                      "extension":  ".md",
+                      "bytes":  2354,
+                      "modified_at":  "2026-07-27T14:16:12.7007062Z",
+                      "sha256":  "4106602DF2380FCB6561746BCA9DEDF14AB9388326ADCA63CBA4D10A93809E09"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/__pycache__/net_error_handler.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9468,
+                      "modified_at":  "2026-04-28T19:50:48.4933542Z",
+                      "sha256":  "0CDD3A6E87DC8C4C7A0E4D227F89A8D8775065F3DB127BD5F71664E74B3BD87D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/__pycache__/sync_utils.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  10690,
+                      "modified_at":  "2026-04-28T18:22:53.6631850Z",
+                      "sha256":  "742C32FB1FBE10386E4433F2706B5DF8B893DF6FC2D73B664F7C4B494C9792F6"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/Analysis-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  347586,
+                      "modified_at":  "2026-06-22T14:41:52.6393700Z",
+                      "sha256":  "CEB0E85052659752185EA9C76AB8A4A65C48CE6B9AA1CD7A5CF89D73A9CDFA7D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/base_library.zip",
+                      "extension":  ".zip",
+                      "bytes":  1401781,
+                      "modified_at":  "2026-06-22T14:41:48.6917506Z",
+                      "sha256":  "5692EFF69839E69CB1D7E46A31862BBD3790267202C1715194EBFC41F45EB0B3"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/EXE-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  136491,
+                      "modified_at":  "2026-06-22T14:42:12.9263137Z",
+                      "sha256":  "BF5440EE94DCBADA929ADC46B2ADDF7A6C1AB24A7B6262F03434411F72EDD4AE"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod01_archive.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  4826,
+                      "modified_at":  "2026-06-22T14:41:52.6393700Z",
+                      "sha256":  "8F91FCE066445D4ED06E6A2F6BB0BE2AE3B5FA88C5BC3786EEABFD1EF904BE99"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod02_importers.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  31821,
+                      "modified_at":  "2026-06-22T14:41:52.6541902Z",
+                      "sha256":  "E8B6EF7DE60F33ABF9B3D0C64FEAAA74F99D1C49AB7EE60EC9A65FBE740F68FC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod03_ctypes.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  6469,
+                      "modified_at":  "2026-06-22T14:41:52.6571844Z",
+                      "sha256":  "313CF51ACF0B8FAFB0855C7CF5AB0205C51123BDAE3E3FB8218D8FD7225F8136"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod04_pywin32.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  1698,
+                      "modified_at":  "2026-06-22T14:41:52.6581836Z",
+                      "sha256":  "8D178A51A52F27E128963DB42630594E7F8A7BC37ADDD8A37ED6554CC17A7925"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/struct.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  305,
+                      "modified_at":  "2026-06-22T14:41:52.6393700Z",
+                      "sha256":  "DC46CDFAB7EA5BFD78E20CE81838A7A17666060827028564B0A2DE0198ACA964"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/PKG-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  134778,
+                      "modified_at":  "2026-06-22T14:42:12.4043685Z",
+                      "sha256":  "42DD2A420C30B1D57EECC83949B7BFB5F3665C364783F5829D6382C96985E0B2"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/PYZ-00.pyz",
+                      "extension":  ".pyz",
+                      "bytes":  10308611,
+                      "modified_at":  "2026-06-22T14:41:54.9389425Z",
+                      "sha256":  "240779733F82A5F5B51D5E2C82F32AEE86E75CED4EF359D58406AE3AA5049609"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/PYZ-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  177165,
+                      "modified_at":  "2026-06-22T14:41:55.0439231Z",
+                      "sha256":  "4378924B4F5E3AB679BB69F26001315C07839827240408A0191DACC02DD56F66"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/sync_master.pkg",
+                      "extension":  ".pkg",
+                      "bytes":  38782422,
+                      "modified_at":  "2026-06-22T14:42:12.3307563Z",
+                      "sha256":  "D9433EDFD89C054E38ADD1FDE3607E28D1A4394DBDFAEF6BAB5DBD31620CE276"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/warn-sync_master.txt",
+                      "extension":  ".txt",
+                      "bytes":  51765,
+                      "modified_at":  "2026-06-22T14:41:52.4331658Z",
+                      "sha256":  "24C43D920F93FE243A4285AD52C3B01CCB9FB8FEFFF132AD88602B5C0125D852"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/xref-sync_master.html",
+                      "extension":  ".html",
+                      "bytes":  2197677,
+                      "modified_at":  "2026-06-22T14:41:52.5804651Z",
+                      "sha256":  "2CDF29F3DACE14DAFC2D18064728AB67F882130C0C0FC20962B9218D2804B53B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/configura 1.ini",
+                      "extension":  ".ini",
+                      "bytes":  375,
+                      "modified_at":  "2025-06-11T16:18:29.6881433Z",
+                      "sha256":  "C60E673374C0543583A099E8D0158D6739128888AA30646B2364FC43E7662F21"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  323,
+                      "modified_at":  "2026-02-03T13:25:28.3774921Z",
+                      "sha256":  "9F438A29B2A6F5DED625454EAE7C09E4C3AE23BBE7388862FF36D745F5F8A02D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/configura1.ini",
+                      "extension":  ".ini",
+                      "bytes":  384,
+                      "modified_at":  "2025-10-30T17:55:22.1436454Z",
+                      "sha256":  "C432AB5E5E841DBB5D75DF9C512F3F41A7787201EBDBFC42D5FD466DC61C568C"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/dist/sync_master.exe",
+                      "extension":  ".exe",
+                      "bytes":  39315926,
+                      "modified_at":  "2026-06-22T14:42:12.8983771Z",
+                      "sha256":  "4BEE8AED8ED1B018D60FF86D834CABCB9D39DE0369ADA3FCF5BA402E633A0E5B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  311,
+                      "modified_at":  "2026-01-26T13:35:12.0038984Z",
+                      "sha256":  "BD2F6B4EB7EE73FE389E997E375BBEA30455B2E17BB3A960176A79FFC2929D39"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/icon.ico",
+                      "extension":  ".ico",
+                      "bytes":  261950,
+                      "modified_at":  "2025-07-14T18:57:09.5307571Z",
+                      "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2025-11-07T14:01:26.4170774Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/sync_docum_cc_v3.py",
+                      "extension":  ".py",
+                      "bytes":  7969,
+                      "modified_at":  "2026-01-26T13:35:47.2124653Z",
+                      "sha256":  "5C4F9848C76282CCD17B2BA578A023457352BC125832BCA5D591D2887739C2FA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/sync_docum_cc_v3.spec",
+                      "extension":  ".spec",
+                      "bytes":  1057,
+                      "modified_at":  "2025-12-16T14:06:08.9082843Z",
+                      "sha256":  "7EC0BFF72E2BF7D70ECF30EA52F8BC5480769FDDC76E60BDEEEA3B58B6132307"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  8068,
+                      "modified_at":  "2025-11-07T14:01:25.0038586Z",
+                      "sha256":  "8775EAD6C5EEEB2C8025D262C65560C874C4BBADB1EC4184F02CBA4C501D4BAA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/__pycache__/net_error_handler.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9476,
+                      "modified_at":  "2026-04-10T13:24:23.1643281Z",
+                      "sha256":  "5CE7C2B1B5DA18FA7AB0DFD235EA059578EDAE879324F1590F8D52A10999748B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/__pycache__/sync_factura_v3.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9561,
+                      "modified_at":  "2026-04-10T13:24:23.0644362Z",
+                      "sha256":  "AC5460BF64BCA93CC961FFC1A321DB9FE0630391A75F51E29F740F9DCCA0124A"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/__pycache__/sync_utils.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  10852,
+                      "modified_at":  "2026-04-10T13:24:23.0946325Z",
+                      "sha256":  "DADEC5165887528FF1B5356395176D32BCE56432EE95E93BEAC7C36561AC7F09"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/Analysis-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  42725,
+                      "modified_at":  "2026-04-10T13:26:04.1419356Z",
+                      "sha256":  "3B05C04629F7D04B7CA606454282415F586D1FC6DBB8E2A9C083A686E5C2094A"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/base_library.zip",
+                      "extension":  ".zip",
+                      "bytes":  1401781,
+                      "modified_at":  "2026-04-10T13:26:03.6534622Z",
+                      "sha256":  "12DFACE00F942114A333CACB40E2DFA195856F10A2DF80B2CC9F9C76E08FB196"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/EXE-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  5507,
+                      "modified_at":  "2026-04-10T13:26:06.5769243Z",
+                      "sha256":  "0B6DFDB71003582832A8A6926A529D851492C7E6B309A9C600E17B5062405C3C"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod01_archive.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  4826,
+                      "modified_at":  "2026-03-26T14:01:24.5599863Z",
+                      "sha256":  "8F91FCE066445D4ED06E6A2F6BB0BE2AE3B5FA88C5BC3786EEABFD1EF904BE99"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod02_importers.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  31821,
+                      "modified_at":  "2026-03-26T14:01:24.5599863Z",
+                      "sha256":  "E8B6EF7DE60F33ABF9B3D0C64FEAAA74F99D1C49AB7EE60EC9A65FBE740F68FC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod03_ctypes.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  6469,
+                      "modified_at":  "2026-03-26T14:01:24.5725357Z",
+                      "sha256":  "313CF51ACF0B8FAFB0855C7CF5AB0205C51123BDAE3E3FB8218D8FD7225F8136"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod04_pywin32.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  1698,
+                      "modified_at":  "2026-03-26T14:01:24.5725357Z",
+                      "sha256":  "8D178A51A52F27E128963DB42630594E7F8A7BC37ADDD8A37ED6554CC17A7925"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/struct.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  305,
+                      "modified_at":  "2026-03-26T14:01:24.5316237Z",
+                      "sha256":  "DC46CDFAB7EA5BFD78E20CE81838A7A17666060827028564B0A2DE0198ACA964"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/PKG-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  3763,
+                      "modified_at":  "2026-04-10T13:26:06.4322775Z",
+                      "sha256":  "3304E1915C2B51109866BFCE82FB802D8F323A652040FC3454292D0BDA6C4656"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/PYZ-00.pyz",
+                      "extension":  ".pyz",
+                      "bytes":  1520804,
+                      "modified_at":  "2026-03-26T14:01:24.9181476Z",
+                      "sha256":  "FD5372EAA819A19BD36C0B7304D4C655939B3FE43DA5BCB8E92DD4320C8A0A75"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/PYZ-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  18499,
+                      "modified_at":  "2026-03-26T14:01:24.9227544Z",
+                      "sha256":  "4026C14AC7D95596DA8845EB75D85111B48E47F0BA6186F8FE56BF17790B5AB4"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/sync_factura_master.pkg",
+                      "extension":  ".pkg",
+                      "bytes":  7476092,
+                      "modified_at":  "2026-04-10T13:26:06.4308309Z",
+                      "sha256":  "6E90F110E331B414B53A7F71A089FE911BFF8DC6EE95902169096A3128650C57"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/warn-sync_factura_master.txt",
+                      "extension":  ".txt",
+                      "bytes":  2263,
+                      "modified_at":  "2026-04-10T13:26:04.1064460Z",
+                      "sha256":  "FA15FA50A1223F15EA45D6D8D0BA0AC682BEB22EA79E601CFF1EDB42C16A7A90"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/xref-sync_factura_master.html",
+                      "extension":  ".html",
+                      "bytes":  288526,
+                      "modified_at":  "2026-04-10T13:26:04.1313986Z",
+                      "sha256":  "1C4CCF003DFB1E70B68971B7092FEBB80006D231D618608A71C0CE47C0200D51"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  305,
+                      "modified_at":  "2026-03-24T20:21:57.3762698Z",
+                      "sha256":  "DAD0FFB89CE995E98E840FCCB8263F1420096E7B92E2333D354909F05ED33CC4"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/dist/sync_factura_console.exe",
+                      "extension":  ".exe",
+                      "bytes":  8013941,
+                      "modified_at":  "2026-03-24T19:33:25.8385680Z",
+                      "sha256":  "32ECA45BFA72E39DB9FF1C3659FA771285AC3FBF08FCE3B137EE9C814724E39A"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/dist/sync_factura_master.exe",
+                      "extension":  ".exe",
+                      "bytes":  8009596,
+                      "modified_at":  "2026-04-10T13:26:06.5739314Z",
+                      "sha256":  "708E1EED21E7FBEE23D2C2670D03F523B5DF1FBCAAFE1252123380680D565F37"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/icon.ico",
+                      "extension":  ".ico",
+                      "bytes":  261950,
+                      "modified_at":  "2025-07-14T18:57:09.5307571Z",
+                      "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2025-11-07T14:01:26.4170774Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_factura.exe",
+                      "extension":  ".exe",
+                      "bytes":  8009596,
+                      "modified_at":  "2026-04-10T13:26:06.5739314Z",
+                      "sha256":  "708E1EED21E7FBEE23D2C2670D03F523B5DF1FBCAAFE1252123380680D565F37"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_factura_master.py",
+                      "extension":  ".py",
+                      "bytes":  1340,
+                      "modified_at":  "2026-03-23T19:28:08.3857632Z",
+                      "sha256":  "2E2DD9C9FBC29139B40A7C580991336438D5CCB8772961CBD0B24D0A102E109E"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_factura_master.spec",
+                      "extension":  ".spec",
+                      "bytes":  994,
+                      "modified_at":  "2026-04-10T14:31:43.6135447Z",
+                      "sha256":  "CA98470026DB6141556ABAF7C9F7BDCE546D93E3C4AFF45A20DA1E785136F3BD"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_factura_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8163,
+                      "modified_at":  "2026-03-26T14:00:35.5916779Z",
+                      "sha256":  "F07FCC6B313FE68853A7A9D49CF35B4456DFCE1BD92B2E0028F7B3F33EFF1628"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_reng_fac_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8245,
+                      "modified_at":  "2026-03-26T14:00:36.4006773Z",
+                      "sha256":  "AF9199295F0039BAEFB28CD2F4A68DBD0C003C0FB4E9014B3C97F551D4C038F7"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  8068,
+                      "modified_at":  "2026-03-23T19:52:32.2212758Z",
+                      "sha256":  "8775EAD6C5EEEB2C8025D262C65560C874C4BBADB1EC4184F02CBA4C501D4BAA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/icon.ico",
+                      "extension":  ".ico",
+                      "bytes":  261950,
+                      "modified_at":  "2025-07-14T18:57:09.5307571Z",
+                      "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2026-04-28T18:47:25.0242827Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/__pycache__/sync_not_ent_v3.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9855,
+                      "modified_at":  "2026-04-28T18:20:21.5735360Z",
+                      "sha256":  "E9CEA219AB1B98637A6DB91A9EC6E016A92BF27695DAEE821B1EE6CD0753835D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/__pycache__/sync_reng_nde_v3.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9860,
+                      "modified_at":  "2026-04-28T18:20:24.3939969Z",
+                      "sha256":  "46E47B7DE6D85D579F5170F11217076D2D9065FB5F6D98E7AFE8D92D0BF30975"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/Analysis-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  340551,
+                      "modified_at":  "2026-04-28T19:53:39.5239017Z",
+                      "sha256":  "E37A67FF83C50253355CD9DAD42D7A2026935AF6E31DBF95990285D90C5A7F18"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/base_library.zip",
+                      "extension":  ".zip",
+                      "bytes":  1401781,
+                      "modified_at":  "2026-04-28T19:53:36.3153199Z",
+                      "sha256":  "EBCD63F19ED3045F232D85306AEF0B2344829ED82829939A493BCAB0E27E7F92"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/EXE-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  135986,
+                      "modified_at":  "2026-04-28T19:53:52.8412592Z",
+                      "sha256":  "E0A1C42561E25CF3F6E75704C8106FE16D6CFA1046195E473EB438833D016CA9"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod01_archive.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  4826,
+                      "modified_at":  "2026-04-28T19:47:44.3117446Z",
+                      "sha256":  "8F91FCE066445D4ED06E6A2F6BB0BE2AE3B5FA88C5BC3786EEABFD1EF904BE99"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod02_importers.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  31821,
+                      "modified_at":  "2026-04-28T19:47:44.3207466Z",
+                      "sha256":  "E8B6EF7DE60F33ABF9B3D0C64FEAAA74F99D1C49AB7EE60EC9A65FBE740F68FC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod03_ctypes.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  6469,
+                      "modified_at":  "2026-04-28T19:47:44.3237105Z",
+                      "sha256":  "313CF51ACF0B8FAFB0855C7CF5AB0205C51123BDAE3E3FB8218D8FD7225F8136"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod04_pywin32.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  1698,
+                      "modified_at":  "2026-04-28T19:47:44.3250975Z",
+                      "sha256":  "8D178A51A52F27E128963DB42630594E7F8A7BC37ADDD8A37ED6554CC17A7925"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/struct.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  305,
+                      "modified_at":  "2026-04-28T19:47:44.3085075Z",
+                      "sha256":  "DC46CDFAB7EA5BFD78E20CE81838A7A17666060827028564B0A2DE0198ACA964"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/PKG-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  134243,
+                      "modified_at":  "2026-04-28T19:53:52.2179700Z",
+                      "sha256":  "16853ADC51B8BB59514F201D26ADC41AA21C5F02E2CB33BD356B6EB183AB8142"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/PYZ-00.pyz",
+                      "extension":  ".pyz",
+                      "bytes":  9965256,
+                      "modified_at":  "2026-04-28T19:53:41.6197674Z",
+                      "sha256":  "FF70690E95082D855C634395898208996FC67D1EC60249222B93D308F0CB7F2D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/PYZ-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  170851,
+                      "modified_at":  "2026-04-28T19:53:41.6626533Z",
+                      "sha256":  "D3FE8E06F926F1E6851790CEC277CEE1B4BCD8C6E130E763D67313DB62DF9AC9"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/sync_master_not_ent.pkg",
+                      "extension":  ".pkg",
+                      "bytes":  34036791,
+                      "modified_at":  "2026-04-28T19:53:52.1956693Z",
+                      "sha256":  "D6961FD42B8DD4B189560D3E992EF0232749F64929E368350A53A99C5017B461"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/warn-sync_master.txt",
+                      "extension":  ".txt",
+                      "bytes":  50924,
+                      "modified_at":  "2026-04-28T19:53:39.3508631Z",
+                      "sha256":  "03244B76D4D96A784FB1EBE28B1B12B96943D6A04852BBF1B61DB9A89D56B16B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/xref-sync_master.html",
+                      "extension":  ".html",
+                      "bytes":  2133897,
+                      "modified_at":  "2026-04-28T19:53:39.4742918Z",
+                      "sha256":  "91B67DFF0C62946CF46A1E6A6F87AFDC2C58890CE4869A961B520F44F8C1D713"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  320,
+                      "modified_at":  "2026-04-28T14:46:09.2012325Z",
+                      "sha256":  "048B70135023993B7529F083F1A49FA84FE570E6225F40671D24B0074584A7BA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/dist/sync_not_ent.exe",
+                      "extension":  ".exe",
+                      "bytes":  34570295,
+                      "modified_at":  "2026-04-28T19:53:52.8149033Z",
+                      "sha256":  "053B11D1E678B88635FE0BA4D0338423954A500E63BE2C31FE82273F4B4B97BC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2026-04-28T18:47:25.0252526Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_master.py",
+                      "extension":  ".py",
+                      "bytes":  1355,
+                      "modified_at":  "2026-04-28T14:39:25.4863385Z",
+                      "sha256":  "12074C888586AF9DA848A0297F686164BFAC43B823A2B8C636FE47E8F1994009"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_master.spec",
+                      "extension":  ".spec",
+                      "bytes":  3834,
+                      "modified_at":  "2026-06-22T14:40:56.3994222Z",
+                      "sha256":  "DF948F8AA9EBD0E4981BACA74F9E63F0828BDB050595CE312493F71CD416F0FD"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_not_ent.exe",
+                      "extension":  ".exe",
+                      "bytes":  34570295,
+                      "modified_at":  "2026-04-28T19:53:52.8149033Z",
+                      "sha256":  "053B11D1E678B88635FE0BA4D0338423954A500E63BE2C31FE82273F4B4B97BC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_not_ent_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8341,
+                      "modified_at":  "2026-04-28T19:52:03.2466416Z",
+                      "sha256":  "FB778076B8CD7D57E132C29F1D52C55EE61CC9B14A52C9C705956058C3BC18C7"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_reng_nde_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8423,
+                      "modified_at":  "2026-04-28T19:52:14.1470828Z",
+                      "sha256":  "1F73E0A3107A9B2BD504B66E33F367AFCC95D5E006A36C2CB539C424612B7662"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  7932,
+                      "modified_at":  "2026-04-28T18:47:25.0252526Z",
+                      "sha256":  "0944C192ABB93C425D2FA74B76A11A16A94D342742F5C91B9B0701E4290C6B62"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  311,
+                      "modified_at":  "2026-01-26T15:00:00.7618444Z",
+                      "sha256":  "BD2F6B4EB7EE73FE389E997E375BBEA30455B2E17BB3A960176A79FFC2929D39"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/icon.ico",
+                      "extension":  ".ico",
+                      "bytes":  261950,
+                      "modified_at":  "2025-07-14T18:57:09.5307571Z",
+                      "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2025-11-14T19:06:06.5459934Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_bancos_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8119,
+                      "modified_at":  "2026-01-26T14:55:12.2251164Z",
+                      "sha256":  "F057324C38D60D67F4F5B1D9C5F53E42C8F521F6E09E7424089714933DB279DB"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_cuentas_v3.py",
+                      "extension":  ".py",
+                      "bytes":  9275,
+                      "modified_at":  "2026-06-05T18:42:36.9841010Z",
+                      "sha256":  "52B479887007D90D04C33DD85C453BEECCE0310C3B20FCA95D140C94E2F7A3F5"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_moneda_v3.py",
+                      "extension":  ".py",
+                      "bytes":  7511,
+                      "modified_at":  "2025-12-09T18:08:44.5559463Z",
+                      "sha256":  "FEAF5278CB1317A89C65B29C366A755844AD8AC6214E9D1B371F4084EA09FE09"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_payments_master.py",
+                      "extension":  ".py",
+                      "bytes":  2759,
+                      "modified_at":  "2025-12-08T14:13:27.7859313Z",
+                      "sha256":  "1D1C76DAEE99EF6B3091530640C57A8B18D4CDFFC7CC880450BF718EC1A497C1"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_payments_master.spec",
+                      "extension":  ".spec",
+                      "bytes":  4429,
+                      "modified_at":  "2026-06-22T14:40:53.6689918Z",
+                      "sha256":  "ABF78A511BF4254835689D52C4806AAA0E851A3E95B99B4577E0ABD285281E51"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  8068,
+                      "modified_at":  "2025-11-14T19:06:06.5410072Z",
+                      "sha256":  "8775EAD6C5EEEB2C8025D262C65560C874C4BBADB1EC4184F02CBA4C501D4BAA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/__pycache__/sync_pedidos_v3.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9900,
+                      "modified_at":  "2026-04-28T19:52:36.3371719Z",
+                      "sha256":  "B486EA3E720408F70BBB50C983AB607E2DE7743E5665C0C7D5B9BF8B476C542F"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/__pycache__/sync_reng_ped_v3.cpython-313.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  9963,
+                      "modified_at":  "2026-04-28T19:52:37.5260016Z",
+                      "sha256":  "6B8411AAE9D7DD322888FEC7D5988C981D503EE33CCC9F686D150C38EA3F605F"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/Analysis-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  340467,
+                      "modified_at":  "2026-05-28T16:06:54.9708109Z",
+                      "sha256":  "BC6AA8F7F2946BB86CC7D27AD22AF923BFADDC2F4F787E1F83BC6FA3F28700BD"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/base_library.zip",
+                      "extension":  ".zip",
+                      "bytes":  1401781,
+                      "modified_at":  "2026-05-28T16:06:49.7185881Z",
+                      "sha256":  "AAC7F27C34D20E0C238609223936A69E8108E2C67ADCDA0E3A299E35D45D613A"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/EXE-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  135899,
+                      "modified_at":  "2026-05-28T16:07:11.0993166Z",
+                      "sha256":  "F19BA88EAAAE863C9761617F51DDD0B72C668F315DBEDC1AE84A3770188C790D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod01_archive.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  4826,
+                      "modified_at":  "2026-04-28T16:04:28.3754814Z",
+                      "sha256":  "8F91FCE066445D4ED06E6A2F6BB0BE2AE3B5FA88C5BC3786EEABFD1EF904BE99"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod02_importers.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  31821,
+                      "modified_at":  "2026-04-28T16:04:28.3836920Z",
+                      "sha256":  "E8B6EF7DE60F33ABF9B3D0C64FEAAA74F99D1C49AB7EE60EC9A65FBE740F68FC"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod03_ctypes.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  6469,
+                      "modified_at":  "2026-04-28T16:04:28.3866842Z",
+                      "sha256":  "313CF51ACF0B8FAFB0855C7CF5AB0205C51123BDAE3E3FB8218D8FD7225F8136"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod04_pywin32.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  1698,
+                      "modified_at":  "2026-04-28T16:04:28.3876818Z",
+                      "sha256":  "8D178A51A52F27E128963DB42630594E7F8A7BC37ADDD8A37ED6554CC17A7925"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/struct.pyc",
+                      "extension":  ".pyc",
+                      "bytes":  305,
+                      "modified_at":  "2026-04-28T16:04:28.3724893Z",
+                      "sha256":  "DC46CDFAB7EA5BFD78E20CE81838A7A17666060827028564B0A2DE0198ACA964"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/PKG-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  134164,
+                      "modified_at":  "2026-05-28T16:07:10.7253092Z",
+                      "sha256":  "B439D69A501C5926E3BF941BF1E2FCE55DECD547D6F62779B8E331D002C84BB6"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/PYZ-00.pyz",
+                      "extension":  ".pyz",
+                      "bytes":  9965257,
+                      "modified_at":  "2026-04-28T19:53:37.4613481Z",
+                      "sha256":  "085A7CA91AD4F2FE3A94D5B63EB92D35D6D46EB6665BF1AE129B9579F205A384"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/PYZ-00.toc",
+                      "extension":  ".toc",
+                      "bytes":  170804,
+                      "modified_at":  "2026-04-28T19:53:37.4933197Z",
+                      "sha256":  "2EF0CAC7CBFDFD8C79985102F236377C104A9F76CD77BD2ED41CE8D9F008F266"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/sync_master_pedidos.pkg",
+                      "extension":  ".pkg",
+                      "bytes":  34037481,
+                      "modified_at":  "2026-05-28T16:07:10.7083116Z",
+                      "sha256":  "E6533D998E12929B550AB61B0F6D31E53E567FF15FC74FCF637914DFA18AC3AA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/warn-sync_master.txt",
+                      "extension":  ".txt",
+                      "bytes":  50924,
+                      "modified_at":  "2026-05-28T16:06:54.7403378Z",
+                      "sha256":  "0669D7C59CB92233766CC812482C8A81CF6A4143D1425D731B239C17640C1DE6"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/xref-sync_master.html",
+                      "extension":  ".html",
+                      "bytes":  2133837,
+                      "modified_at":  "2026-05-28T16:06:54.9123855Z",
+                      "sha256":  "CA2575D18095386F1071D7BB3ACCBA2FC7CDD273D5F472EDD3E72DE4089E9AC6"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/configura.ini",
+                      "extension":  ".ini",
+                      "bytes":  320,
+                      "modified_at":  "2026-04-28T14:46:09.2012325Z",
+                      "sha256":  "048B70135023993B7529F083F1A49FA84FE570E6225F40671D24B0074584A7BA"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/dist/sync_master_pedidos.exe",
+                      "extension":  ".exe",
+                      "bytes":  34570985,
+                      "modified_at":  "2026-05-28T16:07:11.0724263Z",
+                      "sha256":  "147D0249503BB65A248E465F0FACEC8448AF126B3E549DDD8BBBFA568A61F284"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/dist/sync_pedidos.exe",
+                      "extension":  ".exe",
+                      "bytes":  34571355,
+                      "modified_at":  "2026-04-28T19:55:45.2587797Z",
+                      "sha256":  "A895AE6663F4E42F7AF73E40AD5EF5D8EE16470EBA7A167FFB174221593A8E93"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/icon.ico",
+                      "extension":  ".ico",
+                      "bytes":  261950,
+                      "modified_at":  "2025-07-14T18:57:09.5307571Z",
+                      "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/net_error_handler.py",
+                      "extension":  ".py",
+                      "bytes":  7944,
+                      "modified_at":  "2026-04-28T18:47:25.0262509Z",
+                      "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_master.py",
+                      "extension":  ".py",
+                      "bytes":  1339,
+                      "modified_at":  "2026-04-28T15:33:35.9248362Z",
+                      "sha256":  "5F00C05A75F98DBC0B80DF4C42B6939D35441CD1B7631983A4B0F1A297E91354"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_master.spec",
+                      "extension":  ".spec",
+                      "bytes":  3826,
+                      "modified_at":  "2026-06-22T14:40:54.9418110Z",
+                      "sha256":  "1364792426483530011DF1598C3CFE75EB11B53FB1537093A11ED5D61C55401E"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_master_pedidos.exe",
+                      "extension":  ".exe",
+                      "bytes":  34570985,
+                      "modified_at":  "2026-05-28T16:07:11.0724263Z",
+                      "sha256":  "147D0249503BB65A248E465F0FACEC8448AF126B3E549DDD8BBBFA568A61F284"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_pedidos_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8186,
+                      "modified_at":  "2026-04-28T19:51:41.6044843Z",
+                      "sha256":  "7114E6D853FA963155D160643518112B5399423B52AA88ACDC146DD24BE39426"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_reng_ped_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8250,
+                      "modified_at":  "2026-04-28T19:51:52.5566695Z",
+                      "sha256":  "48DC78D6E10A66B3105E8A55AA3ECF8B7F0EBAEAA2A34CF3F02022E875507CD9"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  7932,
+                      "modified_at":  "2026-02-03T13:39:59.8301721Z",
+                      "sha256":  "0944C192ABB93C425D2FA74B76A11A16A94D342742F5C91B9B0701E4290C6B62"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_articulo_v3.py",
+                      "extension":  ".py",
+                      "bytes":  13499,
+                      "modified_at":  "2026-02-03T13:23:27.9324462Z",
+                      "sha256":  "A245BC19790C0DF0BF5E057DA7E2679D02E2A22C277871FA45A5417D27A1E796"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_cat_art_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8436,
+                      "modified_at":  "2025-12-05T13:25:26.3591292Z",
+                      "sha256":  "81940ED706B1C0B34D79CD4CD9123EE2ABDC12F45584E068090A49F17AEA23EB"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_cliente_v3.py",
+                      "extension":  ".py",
+                      "bytes":  10093,
+                      "modified_at":  "2026-06-19T19:38:42.7464686Z",
+                      "sha256":  "DF0BBB1CEB9739F4F94E2BF205950CBA1E3D800B87B43BECA97863763E623055"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_cliente_v3_old.py",
+                      "extension":  ".py",
+                      "bytes":  7930,
+                      "modified_at":  "2025-11-07T14:01:25.1783923Z",
+                      "sha256":  "E5D4AF93ABC0521B4E1892B69143F8A9C23244E3B666E641179AAFEE6D01BFE8"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_condicio_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8353,
+                      "modified_at":  "2025-12-05T13:25:26.3635584Z",
+                      "sha256":  "15B3AE33A68486A9B04518DF970A35393733B86C426AEA5F25DD9EB08E54B082"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_docum_cc_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8657,
+                      "modified_at":  "2025-12-05T13:25:26.3615607Z",
+                      "sha256":  "2A22C106D212873A39E3CA54037E4F71240CDBF3529873C1CF01774E7813E768"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_lin_art_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8249,
+                      "modified_at":  "2025-12-05T13:25:26.3635584Z",
+                      "sha256":  "99C951BF62D7FE397F1F7D6417A8E36E3E749DD98BAC0C12D309A4B81AC29D3F"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_master.exe",
+                      "extension":  ".exe",
+                      "bytes":  39315926,
+                      "modified_at":  "2026-06-22T14:42:12.8983771Z",
+                      "sha256":  "4BEE8AED8ED1B018D60FF86D834CABCB9D39DE0369ADA3FCF5BA402E633A0E5B"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_master.py",
+                      "extension":  ".py",
+                      "bytes":  2779,
+                      "modified_at":  "2026-02-03T14:37:40.7755264Z",
+                      "sha256":  "EF793D0A560ABFC057FD5BB158F50C13E72BEF1D6C0A7E6CB9AD7294149012E8"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_master.spec",
+                      "extension":  ".spec",
+                      "bytes":  5495,
+                      "modified_at":  "2026-06-22T14:40:52.2965163Z",
+                      "sha256":  "38CDD0F1B6D6DC8D50D3A717CC32938167222B1554C9756BFC2DA53D1D045151"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_sub_lin_v3.py",
+                      "extension":  ".py",
+                      "bytes":  8307,
+                      "modified_at":  "2025-11-14T19:06:06.5439998Z",
+                      "sha256":  "9886154286F40414B2289A4693D073197199161FF9AD8D25A2C70AE6DDA902C5"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_utils.py",
+                      "extension":  ".py",
+                      "bytes":  7971,
+                      "modified_at":  "2026-04-28T18:22:43.1123450Z",
+                      "sha256":  "1FAE6DFD36A0279BC97724649B95854AAD014A783EB1025F19EF0B21BA05D44D"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_vendedor_v3.py",
+                      "extension":  ".py",
+                      "bytes":  7882,
+                      "modified_at":  "2025-11-14T19:06:06.5439998Z",
+                      "sha256":  "590C199E42D23D10CEC073DD1A9F8A6B9090FD2ECAABD229F21E1D06E294355E"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/test_conexiones.py",
+                      "extension":  ".py",
+                      "bytes":  8584,
+                      "modified_at":  "2025-11-19T20:15:48.8248157Z",
+                      "sha256":  "18859BEAD83867487D31F3C4A6E67C4C6E090EEE601D48950935BBD2799C3900"
+                  },
+                  {
+                      "path":  "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/test_conexiones.spec",
+                      "extension":  ".spec",
+                      "bytes":  4282,
+                      "modified_at":  "2026-06-22T14:37:23.4638832Z",
+                      "sha256":  "F7534A61738ADCE714D6C1F63E9E97FE88119A286AF98F32B4FF72BF673DAD9A"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Architecture_Specification_v1.0 (1).md",
+                      "extension":  ".md",
+                      "bytes":  54996,
+                      "modified_at":  "2026-07-27T14:16:12.6981225Z",
+                      "sha256":  "A6D323EA2706337EF37D40784A235BD027D2AABAA59BDDB815DB52A671433AB4"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1.zip",
+                      "extension":  ".zip",
+                      "bytes":  54645,
+                      "modified_at":  "2026-07-15T15:51:33.0698405Z",
+                      "sha256":  "AD64708F09108392A3FF5D43516F63C7EED2806FFF23A1E551578FFEAE31907F"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/00_README.md",
+                      "extension":  ".md",
+                      "bytes":  2005,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "635D74C11F538391F053C56FC905A05478F5DADE8C38885F36815BA0D6EDBD30"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/01_ARCHITECTURA_Y_DECISIONES.md",
+                      "extension":  ".md",
+                      "bytes":  10155,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "C50449108BB6A7DEEED80378A52DAF857A5F6ED171744220AA669FB4F9AD5E40"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/02_AGENTE_PYTHON.md",
+                      "extension":  ".md",
+                      "bytes":  11143,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "82AB198DC39E073E0240CFC97ADA6A4A2A25A8C476C53F7F64ABEDC1048D1AAB"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/03_CENTRO_LARAVEL_Y_API.md",
+                      "extension":  ".md",
+                      "bytes":  7489,
+                      "modified_at":  "2026-07-17T19:48:41.7846274Z",
+                      "sha256":  "671AD6429F4E21897C4EB9CE453E04E07DCB1AE01F1F9508FDA58F45CAF95C88"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/04_CONTRATOS_Y_MAQUINAS_DE_ESTADO.md",
+                      "extension":  ".md",
+                      "bytes":  4927,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "87F90D517848C7227FABF98EE1D461E58C72AE6920C73A21E35B1B890120C2D7"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/05_MODELO_DE_DATOS.md",
+                      "extension":  ".md",
+                      "bytes":  4409,
+                      "modified_at":  "2026-07-17T19:37:05.1733906Z",
+                      "sha256":  "1839607D2DCAC68B3172A20F4D2BE253ACC0C3A0CA357355829D30814DE617B1"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/06_QA_Y_ESTRATEGIA_DE_PRUEBAS.md",
+                      "extension":  ".md",
+                      "bytes":  6448,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "DD831760FFCBB9CF42528B5B049B73DEFB3491B00538E6FF1C0495DC55D793AD"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/07_ESCALABILIDAD_100_AGENTES.md",
+                      "extension":  ".md",
+                      "bytes":  3304,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "5CBD9AC78CFAC79678FD9FCF8D9FE688C952246B9FAF934D131933B3239830FF"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/08_ROADMAP_Y_BACKLOG.md",
+                      "extension":  ".md",
+                      "bytes":  4827,
+                      "modified_at":  "2026-07-17T19:37:06.7444675Z",
+                      "sha256":  "E89AB08BDA3B6D33E88D7E623392B911D1E26E23D92B90D9A357DE58DDB53886"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/09_PLAYBOOK_CODEX.md",
+                      "extension":  ".md",
+                      "bytes":  3668,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "EA0AB0EA0E863DDAC6FE6B271CF00F0921F11E6136DAEF8F2B2C8E2D7491C684"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/10_ADR_REGISTRO_DECISIONES.md",
+                      "extension":  ".md",
+                      "bytes":  4663,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "29F30D6E6B36534734B2DF9552B5EBC6DA17D6E1718DE8C430E28274B58CCB85"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/11_CHECKLIST_ACEPTACION_MVP.md",
+                      "extension":  ".md",
+                      "bytes":  2573,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "ACE19804B03C7EBEF473FC3FB6B330A60C0EF6608D07B23D9B2F7EFFAE3C4987"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/12_CONTRATO_API_CONTROL_v1.md",
+                      "extension":  ".md",
+                      "bytes":  5961,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "48A08F4FA6BCD66FC93960D0F7010221FEB1F253F6121388F18E4F71E66402C3"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/BAPPS_SYNC_PLAN_MAESTRO_v1.1.md",
+                      "extension":  ".md",
+                      "bytes":  63525,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "4F964ABC420D208BF1500D841539228991DB9C6BB3047697467F2D7A1CF947F3"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/CONSISTENCY_REPORT.json",
+                      "extension":  ".json",
+                      "bytes":  1035,
+                      "modified_at":  "2026-07-15T19:48:04.0000000Z",
+                      "sha256":  "1C1B87B2980DEB2BF192B32359DC397B4BCF569B2A103C9528EB1D1B2207B7B0"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/agent-config.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1099,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "C8C19B10442C6BCA55F02A3BBE02E0AD95F8341B3D3755C377E457670C1E89DA"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/command.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  2758,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "6851569659DAE7DF75CB522B82DBE21C54257346AEFAB9733FBDBCCBF3D991ED"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/event.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1102,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "2F9C603ECA344B81ABC30486E77E2996CE6781697B65715251CFC792F7BB96B2"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/heartbeat.v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1714,
+                      "modified_at":  "2026-07-15T19:48:02.0000000Z",
+                      "sha256":  "A19D790C1CEC76B4152B069B39575B88D016703861FFD8B6B2E27FB1788294AD"
+                  },
+                  {
+                      "path":  "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/REVISION_DOBLE_COHERENCIA.md",
+                      "extension":  ".md",
+                      "bytes":  2354,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "4106602DF2380FCB6561746BCA9DEDF14AB9388326ADCA63CBA4D10A93809E09"
+                  },
+                  {
+                      "path":  "BAPPS_SYNC_PLAN_MAESTRO_v1.1.md",
+                      "extension":  ".md",
+                      "bytes":  63852,
+                      "modified_at":  "2026-07-27T14:16:12.6460778Z",
+                      "sha256":  "39697F1C84149ACE8B7A8411D6DF2EF33A0D39238697939B6AA0AA8647841F48"
+                  },
+                  {
+                      "path":  "contracts/agent-config.v1.1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  1086,
+                      "modified_at":  "2026-07-22T15:34:40.8976456Z",
+                      "sha256":  "E568A64F14ED4CCBE3026BFD67B6D8DFDB273CE021B7987EEDF040D78D6A42FD"
+                  },
+                  {
+                      "path":  "contracts/read-recipe-v1.schema.json",
+                      "extension":  ".json",
+                      "bytes":  7313,
+                      "modified_at":  "2026-07-28T17:55:13.3348260Z",
+                      "sha256":  "93E7EA25422C1A4365A27AA24AC0E20008CA55FB4298120D44073A6F6ECF25B8"
+                  },
+                  {
+                      "path":  "CONTROL_RUNTIME_AUTOMATICO.md",
+                      "extension":  ".md",
+                      "bytes":  2343,
+                      "modified_at":  "2026-07-28T17:25:16.5086305Z",
+                      "sha256":  "72ED09D6C4481174FBA3AD493288C65ABD74450FD54A71ABE5A74EF44B72F55D"
+                  },
+                  {
+                      "path":  "CREAR_SINCRONIZADOR_DESDE_CATALOGO.md",
+                      "extension":  ".md",
+                      "bytes":  4815,
+                      "modified_at":  "2026-07-29T15:33:48.7448525Z",
+                      "sha256":  "2F2FE9AB7B38C10E42FABAC862ACD002406C7321603B2993652CF14EE28EFAC6"
+                  },
+                  {
+                      "path":  "DEPLOY_CENTRO_LARAVEL.md",
+                      "extension":  ".md",
+                      "bytes":  12039,
+                      "modified_at":  "2026-07-28T17:31:13.6382339Z",
+                      "sha256":  "8408234EC551D53B7215951E8A2665D3DF6388BA0919A88005F11152335E6886"
+                  },
+                  {
+                      "path":  "ESPECIFICACION_MOTOR_UNICO_LECTURA_PROFIT_2026-07-27.md",
+                      "extension":  ".md",
+                      "bytes":  17433,
+                      "modified_at":  "2026-07-27T22:34:31.6454841Z",
+                      "sha256":  "81287C1865370D9E4AFCC029121CC9AD8568ABAE079BB2D109727193B2A3DC3F"
+                  },
+                  {
+                      "path":  "ESTADO_AGENTE_0.6.0_CANDIDATO.md",
+                      "extension":  ".md",
+                      "bytes":  3059,
+                      "modified_at":  "2026-07-28T18:11:20.4785193Z",
+                      "sha256":  "B451652CE70ECE73CD6BF7F5D96F1F541D91D2EE1958D62DB03A368DACD90719"
+                  },
+                  {
+                      "path":  "ESTADO_AGENTE_0.6.1_HOTFIX.md",
+                      "extension":  ".md",
+                      "bytes":  3929,
+                      "modified_at":  "2026-07-29T13:38:25.1899999Z",
+                      "sha256":  "06E36865F47B76C6CEE3637CE48BE889FF56232EE0C630E18A2ECEAAF9ED4133"
+                  },
+                  {
+                      "path":  "ESTADO_AGENTE_0.6.2_FIRMA_Y_ESTADO.md",
+                      "extension":  ".md",
+                      "bytes":  3128,
+                      "modified_at":  "2026-07-29T13:56:48.7059563Z",
+                      "sha256":  "A99B9B8FCFA4EA681C80DB943B4C08C7EE1D85B40D506E74F79494DD0AF2AC70"
+                  },
+                  {
+                      "path":  "ESTADO_AGENTE_PORTABLE_2026-07-17.md",
+                      "extension":  ".md",
+                      "bytes":  24830,
+                      "modified_at":  "2026-07-27T14:16:12.6312205Z",
+                      "sha256":  "6DCE97D302FF7936CF3408F92A7CF28B2561299F357E725351A81A13FE8DD366"
+                  },
+                  {
+                      "path":  "ESTADO_IMPLEMENTACION.md",
+                      "extension":  ".md",
+                      "bytes":  11601,
+                      "modified_at":  "2026-07-27T14:16:12.6812436Z",
+                      "sha256":  "B92CC1F65504BA99D4C92613C783E85DA6C39FED80F3784E6BB369E435DDD06B"
+                  },
+                  {
+                      "path":  "example bapps agent config.jpg",
+                      "extension":  ".jpg",
+                      "bytes":  79219,
+                      "modified_at":  "2026-07-27T13:33:22.0628725Z",
+                      "sha256":  "908CFEEF2359392CA7B5C8CD8678399EDEF33E56215DF1C4E35B7BAE2EA809FD"
+                  },
+                  {
+                      "path":  "frontend-design/BAPPS Sync - Documentacion.dc.html",
+                      "extension":  ".html",
+                      "bytes":  25307,
+                      "modified_at":  "2026-07-27T14:16:12.6644315Z",
+                      "sha256":  "2E8ED094F07C1C2CBD56D8EE675BD30D37B4B493775FC692055B1882AFE22C3C"
+                  },
+                  {
+                      "path":  "frontend-design/BAPPS Sync - Guia Tecnica.dc.html",
+                      "extension":  ".html",
+                      "bytes":  25193,
+                      "modified_at":  "2026-07-27T14:16:12.6478846Z",
+                      "sha256":  "7818B3B640C93870A0237796633F93243D786A56DAC57DEA9ECF60FB7394731B"
+                  },
+                  {
+                      "path":  "frontend-design/BAPPS Sync (standalone).html",
+                      "extension":  ".html",
+                      "bytes":  687750,
+                      "modified_at":  "2026-07-27T14:17:49.0438234Z",
+                      "sha256":  "A7F0B48956B1EAE8B8E72CBE8D1BD760D70B80DA59863E758FE729214272B23F"
+                  },
+                  {
+                      "path":  "GUIA_PRUEBA_VERTICAL.md",
+                      "extension":  ".md",
+                      "bytes":  10272,
+                      "modified_at":  "2026-07-27T14:16:12.6478846Z",
+                      "sha256":  "36401C7E00043D1CBE2065935C6B790E15667C1AEA7B373A8D43446C45318583"
+                  },
+                  {
+                      "path":  "HANDOFF_CONTINUACION_2026-07-23.md",
+                      "extension":  ".md",
+                      "bytes":  23048,
+                      "modified_at":  "2026-07-27T16:03:09.2084833Z",
+                      "sha256":  "654EF18A862039E116D41D9BA50263678145641ECCE3F45CE04E59E387A250F6"
+                  },
+                  {
+                      "path":  "HANDOFF_CONTINUACION_2026-07-27.md",
+                      "extension":  ".md",
+                      "bytes":  22773,
+                      "modified_at":  "2026-08-03T14:00:37.8246692Z",
+                      "sha256":  "58EE65906039C481F99815329B6BD7EC8639AB5415A2F73BD0878C0E6DF1512A"
+                  },
+                  {
+                      "path":  "ONGOING.txt",
+                      "extension":  ".txt",
+                      "bytes":  46363,
+                      "modified_at":  "2026-08-03T13:59:26.4215957Z",
+                      "sha256":  "A077B7F281B7A91C221F13048EED7727C94BFF6F9634941E085FC5501489C7C2"
+                  },
+                  {
+                      "path":  "PILOTO_INTEGRAL_VALERY.md",
+                      "extension":  ".md",
+                      "bytes":  6984,
+                      "modified_at":  "2026-07-28T17:36:03.1123871Z",
+                      "sha256":  "FA04237BFB38A7FAA8713B6FD3DDEF73620615CEE7B7A2540B126E8CD993A531"
+                  },
+                  {
+                      "path":  "PLAN_CONTINUACION_2026-07-22.md",
+                      "extension":  ".md",
+                      "bytes":  15587,
+                      "modified_at":  "2026-07-27T14:16:12.6478846Z",
+                      "sha256":  "EEEE0C2E78929862FB965AB3D9C88C599707871265EC2861D1F2BA880A8192FA"
+                  },
+                  {
+                      "path":  "PLAN_IMPLEMENTACION_FRONTEND_v1.0.md",
+                      "extension":  ".md",
+                      "bytes":  17159,
+                      "modified_at":  "2026-07-27T14:16:12.6312205Z",
+                      "sha256":  "FB4AE00FEC037E2D3F3005CCAE8AE94092EF291845B0DD30D6080A19BECE4C2D"
+                  },
+                  {
+                      "path":  "PLAN_RESILIENCIA_Y_RECETAS_LECTURA_2026-07-27.md",
+                      "extension":  ".md",
+                      "bytes":  14677,
+                      "modified_at":  "2026-07-27T22:15:14.4712764Z",
+                      "sha256":  "7D9F5810173E35C69A8C9B1A964EBE3E3BFEEA6EC0FABBA754C09A41EDA1B890"
+                  },
+                  {
+                      "path":  "VALERY_PRS_WRITER_V1.md",
+                      "extension":  ".md",
+                      "bytes":  5609,
+                      "modified_at":  "2026-08-03T13:59:14.2596541Z",
+                      "sha256":  "9D098BD9C1398D31180C71118F1F6FD5B8E4E6128A8C38E4C1FA446C4C5CBF06"
+                  }
+              ],
+    "duplicate_content_groups":  [
+                                     {
+                                         "sha256":  "A6D323EA2706337EF37D40784A235BD027D2AABAA59BDDB815DB52A671433AB4",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Architecture_Specification_v1.0 (1).md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Architecture_Specification_v1.0 (1).md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "635D74C11F538391F053C56FC905A05478F5DADE8C38885F36815BA0D6EDBD30",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/00_README.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/00_README.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "C50449108BB6A7DEEED80378A52DAF857A5F6ED171744220AA669FB4F9AD5E40",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/01_ARCHITECTURA_Y_DECISIONES.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/01_ARCHITECTURA_Y_DECISIONES.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "82AB198DC39E073E0240CFC97ADA6A4A2A25A8C476C53F7F64ABEDC1048D1AAB",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/02_AGENTE_PYTHON.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/02_AGENTE_PYTHON.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "671AD6429F4E21897C4EB9CE453E04E07DCB1AE01F1F9508FDA58F45CAF95C88",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/03_CENTRO_LARAVEL_Y_API.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/03_CENTRO_LARAVEL_Y_API.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "87F90D517848C7227FABF98EE1D461E58C72AE6920C73A21E35B1B890120C2D7",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/04_CONTRATOS_Y_MAQUINAS_DE_ESTADO.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/04_CONTRATOS_Y_MAQUINAS_DE_ESTADO.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "DD831760FFCBB9CF42528B5B049B73DEFB3491B00538E6FF1C0495DC55D793AD",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/06_QA_Y_ESTRATEGIA_DE_PRUEBAS.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/06_QA_Y_ESTRATEGIA_DE_PRUEBAS.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "5CBD9AC78CFAC79678FD9FCF8D9FE688C952246B9FAF934D131933B3239830FF",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/07_ESCALABILIDAD_100_AGENTES.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/07_ESCALABILIDAD_100_AGENTES.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "E89AB08BDA3B6D33E88D7E623392B911D1E26E23D92B90D9A357DE58DDB53886",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/08_ROADMAP_Y_BACKLOG.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/08_ROADMAP_Y_BACKLOG.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "EA0AB0EA0E863DDAC6FE6B271CF00F0921F11E6136DAEF8F2B2C8E2D7491C684",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/09_PLAYBOOK_CODEX.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/09_PLAYBOOK_CODEX.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "29F30D6E6B36534734B2DF9552B5EBC6DA17D6E1718DE8C430E28274B58CCB85",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/10_ADR_REGISTRO_DECISIONES.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/10_ADR_REGISTRO_DECISIONES.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "ACE19804B03C7EBEF473FC3FB6B330A60C0EF6608D07B23D9B2F7EFFAE3C4987",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/11_CHECKLIST_ACEPTACION_MVP.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/11_CHECKLIST_ACEPTACION_MVP.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "4F964ABC420D208BF1500D841539228991DB9C6BB3047697467F2D7A1CF947F3",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/BAPPS_SYNC_PLAN_MAESTRO_v1.1.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/BAPPS_SYNC_PLAN_MAESTRO_v1.1.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "1C1B87B2980DEB2BF192B32359DC397B4BCF569B2A103C9528EB1D1B2207B7B0",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/CONSISTENCY_REPORT.json",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/CONSISTENCY_REPORT.json"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "C8C19B10442C6BCA55F02A3BBE02E0AD95F8341B3D3755C377E457670C1E89DA",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/agent-config.v1.schema.json",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/agent-config.v1.schema.json"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "6851569659DAE7DF75CB522B82DBE21C54257346AEFAB9733FBDBCCBF3D991ED",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/command.v1.schema.json",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/command.v1.schema.json"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "2F9C603ECA344B81ABC30486E77E2996CE6781697B65715251CFC792F7BB96B2",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/event.v1.schema.json",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/event.v1.schema.json"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "A19D790C1CEC76B4152B069B39575B88D016703861FFD8B6B2E27FB1788294AD",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/heartbeat.v1.schema.json",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/contracts/heartbeat.v1.schema.json"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "4106602DF2380FCB6561746BCA9DEDF14AB9388326ADCA63CBA4D10A93809E09",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/REVISION_DOBLE_COHERENCIA.md",
+                                                       "backend-design/develop-docs/BAPPS_Sync_Development_Pack_v1.1/BAPPS_Sync_Development_Pack_v1.1/REVISION_DOBLE_COHERENCIA.md"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "8F91FCE066445D4ED06E6A2F6BB0BE2AE3B5FA88C5BC3786EEABFD1EF904BE99",
+                                         "count":  4,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod01_archive.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod01_archive.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod01_archive.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod01_archive.pyc"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "E8B6EF7DE60F33ABF9B3D0C64FEAAA74F99D1C49AB7EE60EC9A65FBE740F68FC",
+                                         "count":  4,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod02_importers.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod02_importers.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod02_importers.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod02_importers.pyc"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "313CF51ACF0B8FAFB0855C7CF5AB0205C51123BDAE3E3FB8218D8FD7225F8136",
+                                         "count":  4,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod03_ctypes.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod03_ctypes.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod03_ctypes.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod03_ctypes.pyc"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "8D178A51A52F27E128963DB42630594E7F8A7BC37ADDD8A37ED6554CC17A7925",
+                                         "count":  4,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/pyimod04_pywin32.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/pyimod04_pywin32.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/pyimod04_pywin32.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/pyimod04_pywin32.pyc"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "DC46CDFAB7EA5BFD78E20CE81838A7A17666060827028564B0A2DE0198ACA964",
+                                         "count":  4,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/build/sync_master/localpycs/struct.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/build/sync_factura_master/localpycs/struct.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/build/sync_master/localpycs/struct.pyc",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/build/sync_master/localpycs/struct.pyc"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "4BEE8AED8ED1B018D60FF86D834CABCB9D39DE0369ADA3FCF5BA402E633A0E5B",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/dist/sync_master.exe",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/sync_master.exe"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "BD2F6B4EB7EE73FE389E997E375BBEA30455B2E17BB3A960176A79FFC2929D39",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/configura.ini",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/configura.ini"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "A73CA414DB598B10C36456A1786685565938EAC27A124E4B8A67C1DFEC8AC7D0",
+                                         "count":  5,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/icon.ico",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/icon.ico",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/icon.ico",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/icon.ico",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/icon.ico"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "C3C2255F86007FF5D381231653BEB537C80B27E181A52A6C836F5401FB86772B",
+                                         "count":  6,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/net_error_handler.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/net_error_handler.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/net_error_handler.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/net_error_handler.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/net_error_handler.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/net_error_handler.py"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "8775EAD6C5EEEB2C8025D262C65560C874C4BBADB1EC4184F02CBA4C501D4BAA",
+                                         "count":  3,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Docum_cc/sync_utils.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_utils.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Payments/sync_utils.py"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "708E1EED21E7FBEE23D2C2670D03F523B5DF1FBCAAFE1252123380680D565F37",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/dist/sync_factura_master.exe",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Factura/sync_factura.exe"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "048B70135023993B7529F083F1A49FA84FE570E6225F40671D24B0074584A7BA",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/configura.ini",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/configura.ini"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "053B11D1E678B88635FE0BA4D0338423954A500E63BE2C31FE82273F4B4B97BC",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/dist/sync_not_ent.exe",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_not_ent.exe"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "0944C192ABB93C425D2FA74B76A11A16A94D342742F5C91B9B0701E4290C6B62",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Nota de Entrega/sync_utils.py",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_utils.py"
+                                                   ]
+                                     },
+                                     {
+                                         "sha256":  "147D0249503BB65A248E465F0FACEC8448AF126B3E549DDD8BBBFA568A61F284",
+                                         "count":  2,
+                                         "paths":  [
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/dist/sync_master_pedidos.exe",
+                                                       "backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/Pedidos/sync_master_pedidos.exe"
+                                                   ]
+                                     }
+                                 ]
+}

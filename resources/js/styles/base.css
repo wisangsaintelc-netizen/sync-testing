@@ -1,0 +1,43 @@
+/* Reset y base — BAPPS Sync */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text);
+    background: var(--app-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font-family: inherit; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; }
+
+.mono { font-family: var(--mono); }
+
+/* Scrollbars discretos para una herramienta densa */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #C7CCD3; border-radius: 5px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+@keyframes skeleton-sheen {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes drawer-in {
+    from { transform: translateX(30px); opacity: 0.6; }
+    to { transform: translateX(0); opacity: 1; }
+}

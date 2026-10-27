@@ -1,0 +1,643 @@
+> Referencia vigente: `docs/HANDOFF_CONTINUACION_2026-07-27.md`. Usar ese
+> archivo como estado autoritativo; este registro conserva el historial.
+
+Actualización 2026-08-03 — estado vigente del piloto de escritura Valery:
+usar exclusivamente `agent/release/BAPPS-Sync-Setup-0.7.10.exe` (SHA-256
+`2223C91B9E827088C458B5FB6341D13900852899D0B98750BC621D0A16E36715`).
+0.7.10 corrige el Setup 0.7.9, que no incluía tkinter/Tcl/Tk, e incorpora los
+registros auxiliares `VENTAS_AD`, `VENTAS_ESTADOS` y `VENTAS_EXT` al escritor
+PRS. Pruebas del agente 106/106 y autoprueba portable correctas. Pendiente
+crítico: instalarlo, crear un pedido nuevo y comprobar el documento dentro del
+Administrador de Documentos de Valery. Detalle:
+`docs/VALERY_PRS_WRITER_V1.md`.
+
+Actualización 2026-07-29 — creador de sincronizadores: `Catálogo de syncs →
+Nuevo sync` ahora tiene dos pasos y crea catálogo + versión inicial de receta
+en una sola transacción. Permite fuente Firebird/SQL Server, perfil, tabla,
+columnas explícitas, filtro seguro del año actual, destino MySQL, snapshot o
+histórico, propiedad y límites. No admite SQL libre. Laravel 44/44 (246
+aserciones), agente 78/78, Vite y Pint correctos. La inspección automática de
+tablas/columnas desde un agente autorizado sigue pendiente. Uso:
+`docs/CREAR_SINCRONIZADOR_DESDE_CATALOGO.md`.
+
+Actualización 2026-07-29 — agente 0.6.2: se reprodujo la alternancia entre
+`Conectado` y `La firma de configuración no es válida`. La causa no era la red
+ni la clave: Laravel firmaba `syncs` como Collection y `JsonResponse` cambiaba
+su representación antes de enviarla. El Centro ahora normaliza estructuras
+JSON antes de firmar y el agente separa heartbeat de validez de configuración,
+por lo que un heartbeat no oculta errores de seguridad. Laravel 42/42 (236
+aserciones), agente 78/78 y verificación cruzada Ed25519 correctos. Instalador,
+hash y procedimiento: `docs/ESTADO_AGENTE_0.6.2_FIRMA_Y_ESTADO.md`.
+
+Actualización 2026-07-29 — hotfix 0.6.1: la instalación remota de 0.6.0 reveló
+que una identidad heredada de 0.5.4 no tenía la clave pública Ed25519 y que el
+fallo repetía `/agent/config` cada segundo. Se creó
+`BAPPS-Sync-Setup-0.6.1.exe`, que incorpora solo la clave pública del Centro,
+la fija sin reemplazar token/DPAPI, añade backoff y soporta rotación planificada
+mediante un llavero actualizado por configuraciones firmadas. Agente 76/76;
+Laravel 41/41 y 235 aserciones. Detalle y hash:
+`docs/ESTADO_AGENTE_0.6.1_HOTFIX.md`.
+
+Actualización 2026-07-28 — candidato 0.6.0: se construyeron y validaron
+`agent/release/BAPPS-Sync-Setup-0.6.0.exe` y el ZIP portable sin instalar ni
+modificar `AGT-VALERY-01` 0.5.4. El agente incorpora recetas declarativas
+firmadas para SQL Server/Profit y Firebird/Valery, snapshot, sombra/swap,
+propiedad de tablas, anti-rollback y dependencias portables completas. Suite:
+agente 69/69; Laravel 39/39 (231 aserciones); autopruebas de panel y servicio
+correctas. Estado, hashes y próximos gates:
+`docs/ESTADO_AGENTE_0.6.0_CANDIDATO.md`.
+
+Actualización 2026-07-28 — runtime del Centro: se agregó
+`tools/provision-control-runtime.ps1` y su guía
+`docs/CONTROL_RUNTIME_AUTOMATICO.md`. El aprovisionador prepara de forma
+repetible el PHP del Centro, respalda/restaura `php.ini`, habilita y valida
+`mbstring`, `sodium`, `pdo_mysql`, `pdo_sqlite`, `curl`, `fileinfo` y `openssl`, y conserva o
+genera la clave Ed25519 de recetas en `.env` sin imprimirla. Quedó validado el
+mismo día contra `C:\xampp\php-8.4.23\php.exe`: módulos correctos,
+clave existente preservada, respaldo de `php.ini` creado y `php artisan test`
+correcto (39 pruebas, 231 aserciones). Durante esa validación se corrigieron
+dos defectos expuestos por la suite: el usuario Sanctum ahora se propaga a
+`request()->user()` para la auditoría de revisión de ejecuciones, y el endpoint
+de configuración de agente mantiene la invocación directa usada por los tests.
+
+Documentación de despliegue 2026-07-28: `docs/DEPLOY_CENTRO_LARAVEL.md` es el
+procedimiento operativo del Centro Laravel. Cubre preflight, aprovisionamiento
+de PHP, secretos, MySQL de mínimo privilegio, migraciones, cachés, verificación
+y rollback; diferencia explícitamente este despliegue del instalador/agente de
+cliente. No se aplicó la migración de recetas en una base productiva durante
+esta documentación.
+
+Piloto integral Valery 2026-07-28: se documentó en
+`docs/PILOTO_INTEGRAL_VALERY.md` el protocolo para probar recetas, firma,
+snapshot/swap, MySQL y resiliencia sin tocar `AGT-VALERY-01` 0.5.4 ni
+`clientes_valery_sync`. Gates aún pendientes: UI/RBAC de recetas, inspección
+segura, harness de fallos y empaquetado de un agente candidato separado.
+
+El frontend de BAPPS Sync está completo y funcionando. Ejecuté las 6 fases del plan (F0–F6) en esta sesión, verificando cada flujo en el navegador contra los mocks. La app corre en http://localhost:8000 (login demo: cualquier email/contraseña).
+
+Lo construido:
+
+Laravel 13.8 (confirmado: sí era la última versión, como dijiste) con la SPA React 19 + TypeScript estricto + Vite integrada vía laravel-vite-plugin. Ruta Blade catch-all; el backend solo ocupará /api/v1 cuando exista.
+Contratos congelados en resources/js/lib/ — status.ts (tabla única de estados→color), format.ts (fechas ISO→relativo, duraciones), errors.ts (17 códigos con mensaje operativo + acción sugerida) — y api/types.ts + api/endpoints.ts con los 15 endpoints tipados.
+Mock API con MSW: fixtures deterministas (41 agentes, 30 clientes, ~250 ejecuciones, incluyendo los datos exactos de la maqueta como AGT-000142 y RUN-8835–8842) y transiciones vivas: los comandos pasan solos de pending a completed y las ejecuciones terminan en 8–14 s, simulando el ciclo real del agente.
+7 vistas + 4 drawers: Dashboard (5 KPIs + grilla 2×2, polling 15 s), Ejecuciones, Agentes, Auditoría, Clientes, Catálogo, Asignación en 2 pasos, y los drawers de ejecución (timeline + error en dos niveles + payload), agente (comandos, config activa, outbox), cliente y alta de catálogo.
+Verificado end-to-end en el navegador: login y guard de rutas → dashboard con datos vivos → drawer de RUN-8840 fallida con diagnóstico completo → reintentar creó RUN-8843 que corrió y terminó sola → run_now desde el drawer de agente (comando pending→Completado, sync en Running) → stop_run sobre RUN-8841: Running→Stopping→Interrumpido con timeline. También: alta en catálogo con validación 422, PATCH de intervalo (rechaza <60 s, guarda 600 s), estados de error/vacío forzados, y responsive móvil con sidebar off-canvas. npx tsc --noEmit y npm run build pasan limpios.
+
+Bugs que encontré y corregí sobre la marcha: IDs de run duplicados en fixtures (el histórico generado pisaba RUN-8840), comandos pending estáticos que nunca transicionaban, y el badge "Reintentable" que mostraba "Pending".
+
+Dos notas: el capturador de pantalla del navegador produjo un par de imágenes con el sidebar solapado, pero verifiqué el DOM y el layout es correcto (artefacto de la herramienta, no de la app). Y el proyecto aún no es repo git — si quieres, lo inicializo y hago el primer commit. El siguiente paso natural es el backend real (fases 3 y 8 del plan maestro), implementando exactamente el contrato que ya cumplen los mocks.
+Actualizacion agente portable - 2026-07-17
+
+Se implemento la primera entrega del agente portable Windows con GUI Tkinter. El ejecutable quedo generado en:
+
+agent/dist/BAPPS-Sync-Agent/BAPPS-Sync-Agent.exe
+
+La carpeta completa agent/dist/BAPPS-Sync-Agent/ es el artefacto portable que debe copiarse a otra PC. No basta copiar solo el .exe, porque PyInstaller dejo dependencias dentro de _internal.
+
+Lo implementado en esta etapa:
+
+- GUI local para ver Centro BAPPS en solo lectura, estado de MySQL BAPPS recibido desde el panel, y configurar la base fuente local.
+- Configuracion editable solo para la base a leer: firebird/mysql, host, puerto, base/alias/ruta, usuario y contrasena.
+- Almacenamiento local de la configuracion fuente en el state dir del agente.
+- Proteccion de contrasena con Windows DPAPI; no se guarda en texto plano.
+- Probador de conexion para Firebird y MySQL.
+- Script de empaquetado portable con PyInstaller: agent/scripts/build_portable.ps1.
+- Dependencias opcionales del portable agregadas en agent/pyproject.toml.
+- Tests nuevos para configuracion fuente y proteccion de credencial.
+
+Verificacion realizada:
+
+- Pruebas del agente ejecutadas con C:\tmp\bapps-sync-portable-venv\Scripts\python.exe -m unittest discover -s tests -v.
+- Resultado: 9 tests OK.
+- Portable generado en disco: .exe de 2,771,159 bytes; carpeta portable completa de 980 archivos y 32,656,384 bytes.
+
+Pendiente documentado:
+
+- Probar conexion real contra Firebird en la otra maquina.
+- Agregar bootstrap/enrolamiento visual para que el agente nazca apuntando al Laravel central sin configurar esa URL manualmente.
+- Cerrar contrato de configuracion MySQL BAPPS recibida desde el panel.
+- Implementar lectura/sincronizacion real Valery/Profit.
+- Evaluar instalador formal o portable versionado.
+
+Detalle completo: docs/ESTADO_AGENTE_PORTABLE_2026-07-17.md
+
+Correccion Firebird portable - 2026-07-21
+
+El agente se cambio de firebird-driver (dependiente de fbclient.dll) a firebirdsql, un cliente Python que no necesita DLL nativa. Esto corrige el bloqueo de PyInstaller al intentar cargar la DLL externa. La GUI ahora pide Codificacion Firebird (por defecto iso8859_1 para Valery) y ya no muestra selector de DLL. Se regenero agent/dist/BAPPS-Sync-Agent/. La conexion real debe probarse desde la PC donde sync_clientes.py ya llega a Firebird.
+
+Validacion adicional: Firebird 2.5 requiere passlib para Legacy_Auth. Se agrego passlib al portable, el error de dependencias ahora muestra el modulo exacto y se incorporo una autoprueba interna del ejecutable. Resultado final: 12 pruebas unitarias OK y BAPPS-Sync-Agent.exe --portable-self-test finalizo con codigo 0.
+
+Hito validado 2026-07-22: el portable se conectó correctamente a la base real de Valery en `C:\ValerySMB\Datos\VALERY3.MDF`, mediante Firebird 2.5, localhost:3050 y charset iso8859_1. El alias no estaba definido y se usa la ruta completa de la base. Siguiente entrega aprobada: bootstrap, enrolamiento y heartbeat; ver `docs/PLAN_CONTINUACION_2026-07-22.md`.
+
+P1 implementado 2026-07-22: bootstrap.json junto al portable, enrolamiento automático, identidad protegida con DPAPI, runtime de heartbeat/configuración en segundo plano y estado visible en GUI. El aprovisionador Laravel ahora puede generar el bootstrap con `--bootstrap-output` y `--base-url`. Verificación local: 17 tests Python OK y portable reconstruido; falta la prueba contra Laravel real porque PHP no está disponible en el entorno de compilación de Codex.
+
+P2 validado 2026-07-22: destino MySQL BAPPS por agente cifrado en Laravel, contrato de configuración 1.1, recepción protegida con DPAPI y estado/prueba MySQL de solo lectura en el portable 0.2.0. Se aplicó la migración; `AgentApiTest` (6 tests/29 aserciones) y `ConfigureAgentBappsMysqlTest` (1 test/6 aserciones) pasaron. `AGT-VALERY-01` recibió `bappscloud.com:3306` / `bapps_demo` y la prueba real desde la PC Valery mostró conexión MySQL correcta. Siguiente: P3, sincronizador real `clientes_valery`.
+
+P3 validado 2026-07-22: portable 0.3.0 registra `clientes_valery`; lee `CLIENTES` de Firebird exclusivamente por SELECT, en lotes de 200, y hace upsert idempotente por `codigo` en `clientes_valery_sync` MySQL. `QueueAgentRunTest` pasó (1 test/3 aserciones); `AGT-VALERY-01` reclamó un comando manual y sincronizó correctamente desde la PC Valery a MySQL BAPPS. La segunda ejecución dejó `COUNT(*) = 369` y `COUNT(DISTINCT codigo) = 369`: idempotencia validada, sin duplicados. Scheduler sigue deshabilitado; próximo bloque P4.
+
+P4 en curso 2026-07-22: se añadieron mutaciones reales para comandos y asignaciones del agente, y `.env` ahora usa Laravel real (`VITE_USE_MOCKS=false`) en lugar de MSW. `ControlApiAgentMutationTest` pasó (2 tests/10 aserciones) y el panel real mostró los agentes de Laravel, incluido `AGT-VALERY-01` v0.3.0 online. Pendiente: validar ejecución desde el drawer, luego scheduler/servicio/instalador.
+
+Scheduler P4 validado 2026-07-22: portable 0.4.0 agenda syncs enabled según intervalo, espera el primer intervalo completo y evita duplicar una ejecución activa. La prueba real registró `schedule` success en 5.0 s con 369 leídas / 0 insertadas / 369 actualizadas / 0 fallidas. Pendiente P4: servicio Windows e instalador.
+
+Servicio Windows P4 preparado 2026-07-22: se agrego `BAPPS-Sync-Service.exe`, separado de la GUI, con instalacion y desinstalacion administrativas en `agent/scripts/install_service.ps1` y `agent/scripts/uninstall_service.ps1`. La GUI conserva el rol de configuracion/estado y el servicio ejecuta el runtime en segundo plano.
+
+Las credenciales existentes se migran en la proxima apertura de la GUI desde DPAPI de usuario a DPAPI de maquina, de modo que GUI y servicio comparten el estado seguro de `C:\ProgramData\Bapps\SyncAgent`. No se debe instalar el servicio antes de abrir una vez la GUI actualizada con el usuario que ya posee la configuracion.
+
+Hotfix 0.4.1 2026-07-23: el ZIP 0.4.0 tenia el orden incorrecto de argumentos para registrar el servicio; no llegaba a instalarlo y podia informar exito. Se corrigio a `--startup auto install`, el ejecutable ahora devuelve codigo de error y el script detiene la instalacion si registrar o iniciar falla.
+
+Verificacion: 23 pruebas Python correctas; autopruebas correctas de GUI y servicio; prueba aislada de los argumentos de `pywin32` correcta; scripts PowerShell validados por sintaxis. Se regeneraron ambos artefactos con Tkinter. El paquete correcto para copiar es `agent/release/BAPPS-Sync-Agent-0.4.1-windows-x64.zip` (22,464,788 bytes), validado con GUI, servicio, instalador y guia. El instalador restringe los permisos del estado compartido al usuario propietario, `SYSTEM` y administradores. Pendiente P4: instalar y probar el servicio con privilegios de administrador en la PC Valery; un instalador unico firmado queda para la siguiente entrega.
+
+Actualización 0.4.2 2026-07-23: se generó el instalador gráfico único
+`agent/release/BAPPS-Sync-Setup-0.4.2.exe` (16,261,379 bytes; SHA-256
+`49D68429779F395ED0B54B4B932D49734395D9146FEA387BF8F737711FB4610C`). El usuario ya
+no debe instalar mediante PowerShell: hace doble clic, acepta UAC y el
+asistente prepara el estado DPAPI, instala/actualiza `BAPPSyncAgent` y lo
+inicia internamente. Incluye el arreglo definitivo para el timeout 1053: al
+invocarse sin argumentos, el servicio congelado ahora entra al dispatcher del
+Service Control Manager. GUI y servicio se reconstruyeron, la autoprueba del
+servicio y las 23 pruebas Python fueron correctas; NSIS compiló el Setup sin
+errores. Pendiente inmediato: prueba real en PC Valery, con GUI cerrada y
+heartbeat observable desde el Centro BAPPS.
+
+Corrección 0.4.3 2026-07-23: el primer Setup gráfico encontró un estado
+heredado cuya ACL impedía que el proceso elevado leyera `agent-identity.json`.
+Se generó `agent/release/BAPPS-Sync-Setup-0.4.3.exe` (16,262,558 bytes;
+SHA-256 `15D42609772E6BDB7DB56AEEB2E44FD1C91B09F12D079E035AD135C8354EA653`).
+El nuevo asistente repara los permisos de `C:\ProgramData\Bapps\SyncAgent`
+para SYSTEM y Administradores antes de preparar/iniciar el servicio. Conserva
+el estado y las credenciales DPAPI. GUI y servicio se recompilaron; 23 pruebas
+Python, autoprueba del servicio y compilación NSIS sin advertencias fueron
+correctas. Esta es la versión que debe probarse en Valery.
+
+Corrección 0.4.4 2026-07-23: la 0.4.3 todavía invocaba la preparación de
+identidad desde el instalador elevado, y una ACL explícita de Valery bloqueó
+esa lectura. `agent/release/BAPPS-Sync-Setup-0.4.4.exe` (16,262,488 bytes;
+SHA-256 `3A8A7F1FCD1EC308907F51F105ADEAF0BBB4B71BE2DB2134BEAEC24D2A70AA04`)
+restaura la ACL del estado para SYSTEM/Administradores y registra/inicia el
+servicio sin que el Setup abra la identidad. El servicio usa la misma
+identidad DPAPI de máquina bajo SYSTEM. Verificado: 23 pruebas Python,
+autoprueba del servicio y NSIS sin advertencias. Esta sustituye a 0.4.3.
+
+Corrección 0.4.5 2026-07-23: la ACL todavía negaba lectura al servicio SYSTEM.
+`agent/release/BAPPS-Sync-Setup-0.4.5.exe` (16,383,774 bytes; SHA-256
+`BCCEBB384751662103D62A3D945292F48C321309DFB5468D7CD3AB0AFE18243D`)
+incorpora una reparación nativa de ACL con la API de seguridad de Windows: toma
+posesión de cada elemento de estado y deja acceso protegido a SYSTEM y
+Administradores antes de validar identidad e iniciar el servicio. Se validaron
+importación, 23 pruebas Python, autoprueba del servicio y compilación NSIS.
+
+Corrección 0.4.6 2026-07-23: la 0.4.5 inició el servicio, pero su DLL
+`win32servicemanager.pyd` seguía cargada durante la actualización. El
+instalador `agent/release/BAPPS-Sync-Setup-0.4.6.exe` (16,381,105 bytes;
+SHA-256 `34047A9F1CD0608E8239E42361390DF9105C46D67E69968FA00FF0CA3D289BBC`)
+detiene ordenadamente BAPPSyncAgent y, solo si aún queda retenido durante una
+actualización manual, finaliza ese proceso exacto antes de reemplazar archivos.
+Se validaron 23 pruebas Python, autoprueba del servicio y NSIS sin advertencias.
+
+Corrección 0.4.7 2026-07-23: Windows no resolvía el host PyInstaller con el
+filtro de nombre de servicio y dejó bloqueada `win32servicemanager.pyd`. El
+instalador `agent/release/BAPPS-Sync-Setup-0.4.7.exe` (16,385,478 bytes;
+SHA-256 `D9359F52F1F131D4489745E13880E6B92DD8876088D61BA1E1E419709F1CF770`)
+detiene el servicio y, si es necesario, termina por el nombre exacto de su
+imagen `BAPPS-Sync-Service.exe` antes de actualizar. Suite Python, autoprueba
+del servicio y compilación NSIS correctas.
+
+Validación de servicio 2026-07-23: en la PC Valery se comprobó que el
+heartbeat de `AGT-VALERY-01` sigue llegando cada 30 segundos con la GUI
+cerrada. Esto confirma que el runtime está siendo atendido por el servicio
+Windows y no por Tkinter. La GUI es solamente panel local de configuración y
+consulta mientras el servicio está activo.
+
+F5 implementada 2026-07-23: `LocalSyncLogRepository` usa exclusivamente el
+destino MySQL BAPPS ya publicado por el Centro. Antes de insertar crea, si no
+existen, `sync_success` y `sync_errors` con el contrato documentado. El
+`SyncRunner` registra `success` y `failed`; no registra una interrupción
+humana como error. Si la bitácora local falla, no cambia el resultado de la
+sincronización ni impide el evento durable del outbox. Suite del agente: 28
+pruebas correctas. Queda pendiente una prueba controlada de caída/timeout
+MySQL.
+
+Validación F5 real 2026-07-23: una ejecución de `clientes_valery` insertó en la
+tabla existente `sync_success` la fila con `run_id=RUN-ebd1215585e8458d9491beb7fcdb0612`,
+369 leídos, 0 insertados, 369 actualizados y duración de 4,436 ms. El único
+pendiente de F5 es la prueba controlada de indisponibilidad/timeout de MySQL.
+
+Entrega preparada 2026-07-23: `agent/release/BAPPS-Sync-Setup-0.5.0.exe`
+incluye F5 y mejora la GUI cuando el servicio ya posee el lock: la ventana se
+identifica como panel de consulta/configuración y no escribe un falso estado
+offline. Compilación PyInstaller, autoprueba del servicio y 28 pruebas del
+agente correctas. SHA-256:
+`DF103856EE5BC29503DEA1602A590BBD410D6B76BA16FA12F97D874B33FF926F`.
+La actualización real del instalador sigue pendiente de una prueba limpia;
+no reemplazar la instalación estable de Valery sin coordinar esa validación.
+
+F7 reforzada 2026-07-23: se cubrió en el agente la matriz de `run_now`,
+`stop_run`, `pause_sync`, `resume_sync`, `refresh_config` e idempotencia por
+`command_id` (32 pruebas Python correctas). En Laravel se corrigió la
+recuperación de leases: un comando `claimed` cuyo lease vence, pero que aún no
+expiró, vuelve a `pending` para poder ser reclamado; la idempotencia del journal
+evita su doble ejecución. `AgentApiTest` validado por el usuario: 7 pruebas,
+33 aserciones correctas. Pendiente F7: prueba manual de pausar/reanudar
+`clientes_valery` y observar que el scheduler deja y vuelve a generar ejecuciones.
+
+Corrección de visibilidad F7 2026-07-23: la primera pausa sólo quedaba en el
+estado local del agente y el drawer seguía mostrando `Habilitado`. Ahora la
+emisión de `pause_sync`/`resume_sync` actualiza transaccionalmente la asignación
+central y su `config_version`, además de publicar el comando. Así el panel
+muestra `Pausado`/`Habilitado` de inmediato y el agente recibe la misma
+configuración al refrescar. `ControlApiAgentMutationTest` validado por el
+usuario: 3 pruebas, 18 aserciones correctas.
+
+Corrección horaria 2026-07-23: `sync_success`/`sync_errors` se estaban
+guardando con UTC sin zona en una columna MySQL `DATETIME`; en Caracas eso se
+mostraba cuatro horas adelantado. El agente 0.5.1 conserva UTC para los eventos
+centrales, pero escribe las bitácoras operacionales con la hora local de la PC
+del agente. La corrección pasó 32 pruebas y la autoprueba del servicio. Nueva
+entrega: `agent/release/BAPPS-Sync-Setup-0.5.1.exe` (16,394,541 bytes,
+SHA-256 `FEFE1251B8D33662D21B7CBEF0E63C0828D7FD603FE6BF68E1A34302A3590FCA`).
+Los registros anteriores no se alteran; las nuevas ejecuciones mostrarán la hora
+local correcta después de actualizar.
+
+F8 lecturas reales 2026-07-23: se habilitaron `GET /clients`, detalle de
+cliente, `GET /audit` y `GET /syncs` con paginación, búsqueda y recursos que
+cumplen el contrato del frontend. Clientes calcula salud operativa, cantidad de
+syncs, último resultado y errores fallidos; no usa MSW. `ControlApiReadCoverageTest`
+validado por el usuario: 2 pruebas, 13 aserciones correctas.
+
+F8 catálogo validado 2026-07-23: se añadieron alta y edición global
+(`POST/PATCH /syncs`), filtro habilitado/deshabilitado, validación de código
+inmutable e intervalo mínimo de 60 segundos. El catálogo ahora persiste
+`functional_key` para exponer correctamente `SyncCatalogItem.key`. Al cambiar
+el estado global, las asignaciones no pierden su propio estado, pero los agentes
+afectados incrementan `config_version` y reciben el sync como `disabled` en su
+próxima configuración. El usuario aplicó la migración y validó
+`ControlApiCatalogMutationTest`: 3 pruebas, 17 aserciones correctas.
+`ControlApiReadCoverageTest` se mantiene correcto con 2 pruebas y 13
+aserciones. El reintento de ejecución aún requiere acordar
+un `run_id` preasignado con el agente para poder devolver el nuevo `RunListItem`
+exigido por contrato sin crear ejecuciones duplicadas.
+
+Para retomar en otra conversación, consultar también
+`docs/HANDOFF_CONTINUACION_2026-07-23.md`.
+
+F8 reintento validado 2026-07-23: `POST /runs/{run_id}/retry`
+crea transaccionalmente un nuevo run `pending` y un comando `run_now` que porta
+ese mismo `run_id`. El agente 0.5.2 acepta el identificador preasignado y emite
+los eventos sobre la ejecución ya creada; el Centro rechaza el reintento para
+agentes anteriores, evitando duplicados. `RetryFailedRunTest` fue validado por
+el usuario: 2 pruebas y 10 aserciones correctas. La regresión `AgentApiTest`
+sigue correcta con 7 pruebas y 33 aserciones. La suite Python pasó con 34
+pruebas, incluidas las de command handler/runner para el `run_id` preasignado.
+Los binarios GUI y servicio fueron recompilados, y la autoprueba del servicio
+pasó. Nueva entrega sin instalar nada en Valery:
+`agent/release/BAPPS-Sync-Setup-0.5.2.exe` (16,530,295 bytes; SHA-256
+`09211F96E82CBA29319E8D7CE773361C8451014B592A4EF6A007FE44CBB4225F`).
+Pendiente: prueba integrada controlada de reintento en Valery después de
+actualizar voluntariamente el agente a 0.5.2.
+
+Auditoría de mutaciones implementada 2026-07-23: el Centro ahora crea eventos
+visibles en `/api/v1/audit` al emitir comandos, modificar asignaciones,
+crear/editar catálogo y reintentar ejecuciones. `RecordControlAudit` sólo guarda
+actor, acción, objetivo y contexto operativo mínimo; nunca secretos ni la
+configuración MySQL cifrada. Se añadieron aserciones a
+`ControlApiAgentMutationTest`, `ControlApiCatalogMutationTest` y
+`RetryFailedRunTest`.
+
+Validación de auditoría 2026-07-23: `ControlApiAgentMutationTest` (3 pruebas,
+20 aserciones), `ControlApiCatalogMutationTest` (3/19) y
+`RetryFailedRunTest` (2/11) pasaron; total 8 pruebas y 50 aserciones. Pint
+pasó sobre los cuatro archivos modificados. El chequeo global de Pint conserva
+tres incidencias de estilo preexistentes en `ClientListResource.php`,
+`routes/api.php` y `routes/console.php`, fuera de este cambio.
+
+Preparación de reintento integrado 2026-07-23: `AGT-VALERY-01` quedó Online
+en versión 0.5.2. Se añadió y validó `bapps:create-retry-test-run`, que crea
+una fila central fallida con código reintentable `TARGET_CONNECTION_FAILED`,
+identificada como sintética en su detalle técnico, sin tocar Firebird, MySQL BAPPS ni
+la configuración del agente. `CreateRetryTestRunCommandTest` pasó (1/2) y
+Pint pasó sobre el comando y su prueba. Ejecución preparada para el panel:
+`RUN-RETRY-TEST-342f324d-a02b-420c-a585-0fb269c81350`; esta primera variante
+quedó solo como evidencia de la prueba de UI y fue sustituida por la ejecución
+reintentable documentada a continuación.
+
+F8 reintento integrado validado 2026-07-23: una falla sintética reintentable
+`RUN-RETRY-TEST-8c171b52-a4f7-4ac0-be4a-09517c538490` creó una única ejecución
+nueva mediante comando: `RUN-22173012-4f4e-483a-ac2c-230bf4ebd1c8`. El agente
+Valery 0.5.2 la procesó correctamente: `success` en 4.0 s, 369 leídas, 0
+insertadas, 369 actualizadas y 0 fallidas. No apareció una segunda ejecución;
+queda confirmado el `run_id` preasignado desde Centro hasta agente, eventos y
+panel. La primera ejecución de prueba usaba `RETRY_TEST_ONLY`, que la UI no
+consideraba reintentable; el comando se corrigió para usar
+`TARGET_CONNECTION_FAILED` sin simular una caída real.
+
+F9 hardening local 2026-07-23: se agregaron cuatro pruebas P0 sin intervenir
+la instalación de Valery. Una outbox JSON corrupta pasa a `failed` sin bloquear
+un evento válido posterior; al reiniciar, una ejecución inconclusa emite un
+único `run_finished/interrupted` con `AGENT_RESTARTED`; scheduler y `run_now`
+no ejecutan el mismo sync en paralelo; y `stop_run` simultáneo con la
+finalización deja un solo evento terminal y libera la ejecución. La suite Python
+actual pasó con 38 pruebas.
+
+F9 configuración robusta 2026-07-23: se corrigió un P0 real de estado local.
+Cada `active-config.json` se respalda atómicamente como
+`active-config.last-valid.json`; si el archivo principal es ilegible, el agente
+conserva la última configuración válida en vez de fallar al arrancar. La prueba
+de recuperación y la suite Python completa pasaron con 39 pruebas. En Laravel,
+`AgentApiTest` pasó con 8 pruebas y 39 aserciones, incluida la proyección
+segura ante `run_started` fuera de orden. No se reconstruyó ni instaló un nuevo
+agente con este cambio.
+
+F9 continuidad operativa 2026-07-23: una caída simulada del Centro deja el
+evento durable en la outbox con backoff y no impide que el scheduler local
+ejecute un sync habilitado. Se reforzó también el orden de conexión de
+`clientes_valery`: abre primero el destino MySQL BAPPS; si este falla, no abre
+Firebird. La prueba garantiza que la caída del destino no causa lectura ni
+alteración de Valery. Suite Python completa: 41 pruebas correctas. Aún no hay
+instalador nuevo: estas mejoras siguen solo en el código fuente.
+
+F9 autorización de comandos 2026-07-23: `AgentApiTest` pasó con 10 pruebas y
+50 aserciones. El resultado terminal de un comando es idempotente, conserva el
+primer `run_id` reportado y se expone correctamente al panel. Un agente no puede
+completar el comando de otro: la API devuelve 422 y el comando asignado queda
+sin cambios. Pint pasó sobre los archivos modificados.
+
+Entrega 0.5.3 preparada 2026-07-23: regresión completa correcta — Laravel
+31 pruebas/175 aserciones, Pint, build frontend y 42 pruebas Python. GUI y
+servicio fueron reconstruidos; la autoprueba del servicio pasó. Instalador
+generado sin instalarlo en Valery:
+`agent/release/BAPPS-Sync-Setup-0.5.3.exe` (16,531,485 bytes; SHA-256
+`13B742FE84893D528AEB338520946F9CAA5DDFE68E3F3C854D3F344A8EB9F430`).
+Incluye hardening F9 de configuración, outbox, caída del Centro y destino
+MySQL. La instalación estable de Valery sigue en 0.5.2 hasta decisión expresa.
+
+Corrección de versión 0.5.4 2026-07-23: 0.5.3 ejecutaba correctamente, pero
+el panel mostraba 0.5.2 porque heartbeat y enrolamiento tenían ese valor fijo.
+Laravel persiste el `agent_version` recibido en `agents.version`; el nombre del
+Setup no participa. Se centralizó la versión en `bapps_sync_agent.__version__`
+y se añadieron pruebas para ambos payloads. Suite Python: 43 pruebas; binarios
+reconstruidos y autoprueba de servicio correcta. Instalador preparado para
+validación:
+`agent/release/BAPPS-Sync-Setup-0.5.4.exe` (16,529,827 bytes; SHA-256
+`B35A58C71732F38691193EA026BAC75D6FDED4514B9E58E1D0DB54E4DB0AEF4B`).
+
+Validación de versión 0.5.4 2026-07-23: el usuario instaló el correctivo y el
+panel confirmó `AGT-VALERY-01` en 0.5.4, Online y con heartbeat reciente. No
+hay una actualización pendiente para la PC Valery.
+
+Endurecimiento de autenticación de control 2026-07-23: se reemplazó el bearer
+HMAC sin revocación individual por Laravel Sanctum 4.3. Login genera un token
+`control-api` de 8 horas, con hash persistido en `personal_access_tokens`; al
+emitir uno nuevo se invalida el anterior y borrar el registro revoca el acceso
+inmediatamente. Se añadió la migración
+`2026_07_23_200000_create_personal_access_tokens_table.php`; el middleware
+conserva `UNAUTHENTICATED` y valida por el guard `sanctum`. `ControlApiReadTest`
+pasó con 5 pruebas/41 aserciones y Pint pasó. No afecta el protocolo ni la
+instalación del agente.
+
+Continuación F9 2026-07-27: la migración de Sanctum se aplicó a la SQLite
+central. Regresión completa correcta: Laravel 32 pruebas/179 aserciones, Pint
+y build de React. Se añadió una prueba de dos `run_now` manuales simultáneos:
+el segundo es rechazado con `SYNC_ALREADY_RUNNING` y el sincronizador solo se
+ejecuta una vez. Suite Python completa: 44 pruebas. No se modificó la
+instalación estable de Valery.
+
+Expiración de comandos 2026-07-27: el claim marca los comandos vencidos como
+`expired` y los excluye de la entrega. Se añadió la cobertura a `AgentApiTest`;
+junto con el control posterior de payload, el grupo pasó con 12 pruebas/56
+aserciones y Pint correcto.
+
+Seguridad de secretos 2026-07-27: `SyncRunner` ya no propaga el texto de una
+excepción inesperada del driver a outbox, Centro ni `sync_errors`; conserva
+`UNEXPECTED_SYNC_ERROR` con diagnóstico seguro. La prueba inyecta una URI con
+contraseña y token y comprueba que no quedan en eventos persistidos. Suite
+Python completa: 45 pruebas. Sigue solo en fuente, sin artefacto ni instalación
+nueva en Valery.
+
+Regresión de cierre 2026-07-27: Laravel completo 34 pruebas/185 aserciones y
+Pint completos correctos; suite Python vigente 45 pruebas correctas. El build
+de React ya había pasado y no hubo cambios de frontend posteriores. Próximo
+gate útil: soak/reconexión controlado con Centro offline, únicamente con una
+ventana de prueba acordada y sin intervenir Valery por defecto.
+
+Estandarización y MySQL central 2026-07-27: la lógica de sincronización quedó
+registrada de forma única en `agent/src/bapps_sync_agent/syncs/builtins.py`;
+`clientes_valery.py` sigue siendo la implementación Firebird -> MySQL BAPPS del
+cliente. MySQL `bapps_sync` es ahora el predeterminado para instalaciones nuevas
+de Laravel (`config/database.php` y `.env.example`); SQLite queda solo para las
+pruebas en memoria. El `.env` activo no se cambió todavía porque faltan los
+datos de conexión de la instancia central MySQL. Guía:
+`docs/ARQUITECTURA_SINCRONIZADORES_Y_DATOS.md`. Validado: Python 46 pruebas,
+Laravel 34/185 y Pint correctos; sin instalación nueva en Valery.
+
+Transición central SQLite -> MySQL completada 2026-07-27: Laravel opera ahora
+contra MySQL `bapps_sync` en `127.0.0.1:3306`. Se detectó y corrigió una
+limitación del servidor con múltiples `TIMESTAMP`: los tiempos operativos de la
+migración central usan `DATETIME`. Las siete migraciones quedaron aplicadas. El
+comando protegido `bapps:copy-central-sqlite-to-mysql` transfirió la SQLite
+histórica a MySQL vacío: 2 usuarios, 1 cliente, 1 catálogo, 2 agentes, 2
+asignaciones, 20 comandos, 190 ejecuciones, 376 eventos, 4 auditorías y 1 token
+Sanctum. Eloquent confirmó 2 agentes/190 ejecuciones/376 eventos en MySQL. SQLite
+se conserva como respaldo histórico; Firebird y MySQL BAPPS no se tocaron.
+Regresión posterior: Laravel 34/185 y Pint correctos.
+
+Estado por heartbeat 2026-07-27: se corrigió que un agente pudiera aparecer
+Online solo por conservar ese valor en la BD. El estado visible es `online`
+solo si `last_seen_at` tiene menos de 120 s
+(`BAPPS_SYNC_AGENT_ONLINE_THRESHOLD_SECONDS`, cuatro heartbeats de 30 s); luego
+es `offline`. La misma regla se usa en lista, drawer, filtros, dashboard y
+salud de clientes. MySQL confirmó `AGT-DEMO` como offline con heartbeat de 9
+días. Laravel completo: 35 pruebas/198 aserciones y Pint correcto.
+
+Seguridad de payload 2026-07-27: `agent.payload` limita la API de agentes a
+64 KiB por solicitud (variable `BAPPS_SYNC_AGENT_MAX_REQUEST_BYTES`) y devuelve
+`413 PAYLOAD_TOO_LARGE` antes de persistir. Se añadieron límites a IDs y a las
+ejecuciones incluidas en heartbeat. `AgentApiTest` pasó con 12 pruebas/56
+aserciones; el evento de 70 KiB no se guarda. Pint pasó. Sin cambios de
+instalador ni de la PC Valery.
+
+Corrección 0.4.8 2026-07-23: se detectó que el desinstalador existía pero no
+aparecía en Programas y características. El Setup
+`agent/release/BAPPS-Sync-Setup-0.4.8.exe` (16,385,672 bytes; SHA-256
+`B4475E1BB792199A19B4CC3D9ED62B1177AF261452D8385CF82D548E1AF20D90`)
+registra la entrada estándar de Windows y la elimina al desinstalar.
+
+Paginación de panel de agentes 2026-07-27: la tabla de Agentes conserva su
+paginación real de backend (25 por página) y ahora muestra el resumen aunque
+la única página contenga todos los agentes. El detalle lateral pagina en grupos
+de 10 sus comandos, ejecuciones y timeline, evitando una altura indefinida. Los
+datos del detalle siguen acotados por contrato a 20 comandos, 20 ejecuciones y 50
+eventos; el historial completo se consulta en Ejecuciones/Auditoría. El botón
+se llama `Actualizar configuración`: encola `refresh_config` para descargar la
+configuración vigente en el siguiente sondeo, sin ejecutar una sincronización.
+Build de React de producción correcto (`npm.cmd run build`).
+
+Detalle de cliente y filas compactas 2026-07-27: la API del cliente expone las
+10 ejecuciones fallidas más recientes en `errors`, separadas de las ejecuciones
+generales, y el drawer las muestra en `Errores abiertos` para explicar el
+estado Error. Se reutilizó el paginador de 10 elementos para ejecuciones de
+clientes y agentes. IDs RUN/CMD se abrevian como `RUN-451a…` / `CMD-13EA…`
+(el identificador completo queda en tooltip) y se añadió la hora local a
+ejecuciones y comandos. React build y `tsc --noEmit` correctos. Las pruebas PHP no
+pudieron ejecutarse en el terminal de Codex porque esta sesión no hereda PHP en
+PATH; ejecutar desde la consola XAMPP del usuario el filtro `ControlApiReadTest`
+y Pint de los cuatro archivos PHP modificados.
+
+Alertas revisables 2026-07-27: se separó salud operativa de errores históricos.
+`Marcar revisado` ya no es un cambio visual: persiste `reviewed_at`/`reviewed_by`
+en la ejecución y deja auditoría `error/review_run`; la ejecución sigue Failed en el
+historial. Clientes deja de ser Error por fallos antiguos y usa OK/Warning según
+sus agentes, mientras que `Alertas` muestra sólo fallos pendientes. Dashboard y
+contador de Ejecuciones cuentan alertas no revisadas de 24 h. Requiere aplicar
+la migración `2026_07_27_210000_add_review_tracking_to_sync_runs_table.php` con
+`php artisan migrate`. Frontend: `tsc --noEmit` y build correctos. Falta validar
+PHP/Pint en la consola del usuario, pues PHP no está disponible en el PATH del
+terminal Codex.
+
+Plan de resiliencia y recetas de lectura 2026-07-27: el usuario priorizó poner
+el agente en una máquina Profit y convertir la lectura en una fórmula genérica
+para SQL Server, Firebird y otros motores. Se revisaron los sincronizadores
+legacy Profit: artículos, facturas, pedidos, notas y renglones ya usan variantes
+de reemplazo total; maestros y pagos mezclan inserción/upsert. El estándar nuevo
+será `full_snapshot` para tablas de estado: el agente incluido en el instalador
+lee una fotografía consistente, carga una tabla sombra completa en una base
+MySQL dedicada y hace un swap atómico con la tabla destino configurada que él
+mismo administra. No se descarga Python desde el Centro: la web entrega recetas JSON
+firmadas con tabla, columnas y límites. Pedidos de escritura, joins, cálculos y
+otras reglas siguen siendo módulos manuales empaquetados en nuevas versiones
+del instalador. `TRUNCATE` directo queda descartado porque no es reversible con
+rollback. Documento autoritativo:
+`docs/PLAN_RESILIENCIA_Y_RECETAS_LECTURA_2026-07-27.md`. Incluye propiedad de
+tablas, evolución por versiones/swap, rollback, seguridad, observabilidad,
+correctitud, outbox de 10.000 eventos y matriz de fallos. No se modificó
+`AGT-VALERY-01` 0.5.4.
+
+Motor único Profit 2026-07-27: se revisaron por encima todos los `sync_*` de
+`Sync_Lectura_Legacy_Profit_Coloreal`. La fórmula final no es solo
+tabla/columnas: admite filtros estructurados, ventana de año actual,
+`parent_scope` para renglones, destino configurable y constantes, siempre sin
+SQL o código remoto. `art` usa la transformación empaquetada
+`profit.article_tax_rate_v1`; `moneda` conserva el histórico diario de `US$`
+con `daily_history_v1`. Las tablas legacy solo pueden adoptarse mediante un
+flujo explícito con respaldo, propiedad y auditoría. Especificación:
+`docs/ESPECIFICACION_MOTOR_UNICO_LECTURA_PROFIT_2026-07-27.md`. Contrato:
+`docs/contracts/read-recipe-v1.schema.json`.
+
+Implementación inicial del motor único 2026-07-27: se añadió al agente el
+contrato validado `domain/read_recipes.py`, el compilador parametrizado
+`infrastructure/read_recipe_query.py` y el lector aislado
+`syncs/declarative_table_reader.py`. SQL Server usa perfil local DPAPI y ODBC
+Driver 18/TLS; el lector crea sombra MySQL, inicia `SNAPSHOT`, publica por
+`RENAME TABLE` y jamás adopta tablas externas. Se añadieron pruebas de receta,
+consulta, recarga de tabla propia y fallos Profit/MySQL; suite del agente:
+57 pruebas correctas. `clientes_valery` y `AGT-VALERY-01` permanecen sin
+cambios operativos.
+
+Seguridad y activación de recetas 2026-07-27: se añadió firma Ed25519 de la
+configuración completa Centro→agente (`SignAgentConfiguration`) y verificación
+local antes de guardar o ejecutar una receta. La clave pública se entrega en
+el enrolamiento; por eso el Centro debe tener
+`BAPPS_SYNC_RECIPE_SIGNING_PRIVATE_KEY` configurada antes de enrolar el agente
+Profit. Un recipe engine sin firma se rechaza. El registro ya resuelve recetas
+declarativas al motor único; no se crean `sync_*` nuevos. Pendiente: API/UI de
+versionado/publicación de recetas y el journal/preflight de resiliencia. Suite
+del agente: 63 pruebas correctas; PHP/Pint no validable aquí porque PHP no está
+en PATH.
+
+Inspección centralizada de tablas 2026-07-29: el creador de sincronizadores
+permite seleccionar un agente online, indicar su perfil local y consultar una
+tabla sin salir del panel. El Centro encola `inspect_source_table`; el agente
+0.6.3 valida perfil/motor/identificadores, construye internamente un SELECT de
+una fila y devuelve hasta 256 campos con tipo y muestra truncada, nunca
+credenciales ni SQL. La UI selecciona todos los campos inicialmente y permite
+incluir/excluir cada uno; el filtro anual reutiliza la lista real para elegir
+la fecha. Los previews vencen a los cinco minutos y se purgan por scheduler.
+Agentes anteriores aparecen deshabilitados en el selector. Validación:
+Laravel 46 pruebas/258 aserciones, agente 82 pruebas, `tsc --noEmit`, Vite y
+Pint correctos. Instalador:
+`agent/release/BAPPS-Sync-Setup-0.6.3.exe`, 20.486.704 bytes, SHA-256
+`37A9B1D39D3F82581B20AB310ABFEA6DA5C684E251D98FE6294A52240E404DA5`.
+
+Navegación de previews 2026-07-29: la inspección remota ahora permite ver un
+registro por posición. El panel muestra la columna **Valor**, botones
+Anterior/Siguiente e input **Ir al registro**; el salto permitido es 1–10.000.
+El agente 0.6.4 usa una consulta controlada de hasta dos filas (registro
+actual y comprobación de siguiente), sin SQL libre ni credenciales en tránsito.
+Laravel valida y audita la posición. Se preserva la selección manual de campos
+al navegar. Validación: Laravel 46 pruebas/259 aserciones, agente 84 pruebas,
+`tsc --noEmit`, Vite y autopruebas de ambos binarios correctas. Instalador:
+`agent/release/BAPPS-Sync-Setup-0.6.4.exe`, 20.488.039 bytes, SHA-256
+`2C1156C22C667DB9007EA2DDF1907D3660077C89F390C963AD91750953F3824F`.
+
+Asignación desde catálogo 2026-07-29: **Agentes > Asignación** ahora incluye
+**Agregar sync**. Permite escoger un sincronizador global habilitado que no
+esté ya asignado, definir estado y frecuencia. `POST /api/v1/agents/{code}/syncs`
+crea la asignación de forma transaccional, enlaza la última receta publicada,
+incrementa la configuración del agente y deja auditoría. Rechaza catálogo
+deshabilitado, duplicado, agente deshabilitado o versión incompatible.
+Validación: Laravel 47 pruebas/267 aserciones, TypeScript, Vite y Pint
+correctos.
+
+Diagnóstico de ejecuciones 2026-07-29: 0.6.5 deja de sustituir la excepción
+real por el texto genérico `UNEXPECTED_SYNC_ERROR`. Ahora reporta al Centro el
+tipo y detalle técnico de la excepción, truncado a 1.200 caracteres y con
+redacción de contraseñas, tokens, secretos y credenciales incluidas en URL.
+Los registros históricos generados por 0.6.4 no pueden recuperarse porque el
+detalle se descartó antes de persistirse. El historial de `run_now` muestra
+**Enviado** al ser aceptado por el agente; la ejecución asíncrona conserva su
+resultado definitivo en **Ejecuciones**. Validación: Laravel 47 pruebas/267
+aserciones, agente 84 pruebas, TypeScript, Vite y Pint correctos. Pendiente:
+instalar 0.6.5 en Valery, repetir `sellers_valery` y revisar el detalle técnico
+seguro producido por esa nueva ejecución. Instalador verificado:
+`agent/release/BAPPS-Sync-Setup-0.6.5.exe`, 20.490.418 bytes, SHA-256
+`659D91B3B6FA8B58801767D00F17643AE29CC0A38310DC8DCF35BB8695116ABC`.
+
+Hotfix de firma 2026-07-29: el primer piloto 0.6.5 reveló que la marca local
+de DPAPI para la contraseña MySQL se conservaba junto al documento firmado.
+Al releer la configuración, la verificación Ed25519 detectaba esa marca local
+como una alteración y rechazaba correctamente la receta. 0.6.6 elimina solo
+esa marca al cargar el documento antes de verificarlo; la contraseña sigue
+protegida en disco y la firma Ed25519 continúa siendo obligatoria. Una prueba
+de regresión firma una receta con destino MySQL, la guarda usando el protector
+local y vuelve a verificar la firma al cargarla. Validación: Laravel 47
+pruebas/267 aserciones, agente 85 pruebas, TypeScript y Pint correctos, más
+autopruebas de ambos binarios. Instalador vigente:
+`agent/release/BAPPS-Sync-Setup-0.6.6.exe`, 20.489.603 bytes, SHA-256
+`A9F1285F5AB7D725511478E07B2903C6FA61959B40AD6BEB4647E3F350BD9E45`.
+Pendiente inmediato: actualizar Valery a 0.6.7 y ejecutar `sellers_valery`.
+
+Limpieza de publicaciones 2026-07-29: se confirmó que cada `full_snapshot`
+renombraba la tabla publicada a `__bapps_old_<16-hex>` antes de publicar la
+sombra, pero no eliminaba el respaldo después. 0.6.7 borra su respaldo al
+terminar la publicación y, antes de una nueva carga, purga todos los residuos
+históricos que coincidan exactamente con ese patrón reservado. No borra
+`__bapps_new_*`, tablas de negocio, legacy ni cualquier nombre que no cumpla el
+formato interno. Pruebas agregadas para publicación con tabla previa y purga
+selectiva. Validación: Laravel 47 pruebas/267 aserciones, agente 86 pruebas,
+TypeScript, Vite, Pint y autopruebas de binarios correctos. Instalador vigente:
+`agent/release/BAPPS-Sync-Setup-0.6.7.exe`, 20.493.124 bytes, SHA-256
+`67AEB7D645A3FBA9ECEA7BC6999C8C980BBF45BECCF5B643A280D82EFF3816BF`.
+
+Primera ejecución manual 2026-07-29: se encontró una carrera al asignar un
+sync y presionar Ejecutar inmediatamente. `run_now` intentaba reservar la
+ejecución con la configuración local anterior; el siguiente polling obtenía la
+receta y por eso el segundo intento funcionaba. 0.6.8 ahora descarga y valida
+sincrónicamente la configuración firmada antes de aceptar `run_now`. Si no se
+puede descargar o validar, el comando falla como `CONFIG_REFRESH_FAILED` sin
+crear una run; si tiene éxito, la primera run usa la receta recién asignada.
+Validación: Laravel 47 pruebas/267 aserciones, agente 87 pruebas, TypeScript,
+Vite, Pint y autopruebas de binarios correctos. Instalador vigente:
+`agent/release/BAPPS-Sync-Setup-0.6.8.exe`, 20.491.829 bytes, SHA-256
+`7382E57786FB808250E45CC698F7422967C7BDB54501603AD84F6311B8231A9C`.
+
+Código y clave destino 2026-07-29: el catálogo normaliza el código técnico a
+minúsculas, de modo que `PRODUCTOS_TERMINADOS` puede ser la tabla Firebird y
+`productos_terminados` el identificador interno del sync. El API aplica la
+misma normalización para clientes no web. Las tablas publicadas por recetas
+declarativas ahora incorporan `id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY`
+en la sombra antes del intercambio atómico; en la siguiente fotografía se
+reemplaza la tabla destino previa con ese esquema. La columna `id` de origen
+está reservada y se rechaza para evitar una ambigüedad. Validación: Laravel 48
+pruebas/269 aserciones, agente 87 pruebas, TypeScript, Vite, Pint y
+autopruebas de binarios correctos. Instalador vigente:
+`agent/release/BAPPS-Sync-Setup-0.6.9.exe`, 20.492.443 bytes, SHA-256
+`7842A4B3E2528D99AE115DF5CEECA1EEC1D2D584166C2E20FF4CE88C998EBEBA`.

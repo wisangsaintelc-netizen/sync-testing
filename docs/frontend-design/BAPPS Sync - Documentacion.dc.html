@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<template id="__bundler_thumbnail" data-bg-color="#00133C">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="34" fill="none" stroke="#56ACDE" stroke-width="6"/>
+    <path d="M50 24v26l14 8" fill="none" stroke="#56ACDE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #278AC5; text-decoration: none; }
+  a:hover { color: #002B86; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+  table.doc-table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+  table.doc-table th { text-align: left; background: #F7F8FA; color: #7A828D; font-weight: 600; font-size: 10.5px; letter-spacing: 0.4px; text-transform: uppercase; padding: 8px 10px; border-bottom: 1px solid #E2E6EB; }
+  table.doc-table td { padding: 8px 10px; border-bottom: 1px solid #EDEFF2; color: #33404F; vertical-align: top; }
+  table.doc-table tr:last-child td { border-bottom: none; }
+  doc-page:not(:defined) { visibility: hidden; }
+</style>
+</helmet>
+
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" size="letter" orientation="portrait" margin="0.75in" hint-size="100%,100%">
+
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+    <div style="width:40px; height:40px; border-radius:9px; background:#00133C; display:flex; align-items:center; justify-content:center;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#56ACDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 8 8 8"/><polyline points="12 8 12 12 15 14"/></svg>
+    </div>
+    <div>
+      <h1 style="font-size:22px; font-weight:700; color:#152238; margin:0;">BAPPS Sync — Documentación de diseño</h1>
+      <div style="font-size:12.5px; color:#8A929C;">Sistema visual, arquitectura de vistas y contrato de datos para integración con backend</div>
+    </div>
+  </div>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:14px 0 0;">
+    Este documento describe el diseño de <strong>Sync</strong>, el centro de operaciones de BAPS (Business App Solutions) para monitorear agentes de sincronización, ejecuciones, auditoría, clientes y catálogo de sincronizadores. Su objetivo es doble: (1) dejar explícita la dirección visual — colores, tipografía, componentes — para que cualquier pantalla nueva la mantenga sin reinterpretarla, y (2) documentar qué datos espera cada vista, para que el equipo de backend sepa exactamente qué campos, tipos y estados debe entregar.
+  </p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:26px 0 4px; padding-bottom:6px; border-bottom:2px solid #00133C;">1. Principios de diseño</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:8px 0;">Cuatro decisiones explican casi todas las elecciones visuales de la interfaz:</p>
+  <ul style="font-size:12.5px; color:#33404F; line-height:1.7; margin:6px 0 0; padding-left:18px;">
+    <li><strong>Es una herramienta operativa, no un producto de consumo.</strong> Prioriza densidad de información (tablas compactas, badges pequeños) sobre espacio en blanco decorativo. El usuario es soporte técnico revisando decenas de agentes por sesión.</li>
+    <li><strong>El estado es la información más importante en pantalla.</strong> Casi todo elemento de datos (agente, ejecución, sync, cliente) tiene un estado con semántica de color. Por eso existe un sistema de estado único y centralizado en vez de colores ad-hoc por vista (ver sección 4).</li>
+    <li><strong>Lo "técnico" se distingue tipográficamente de lo "humano".</strong> IDs, códigos, IPs, versiones, JSON y payloads siempre van en monoespaciada (IBM Plex Mono); nombres de cliente, acciones y descripciones van en la sans (IBM Plex Sans). Esto le permite al usuario escanear una fila y distinguir "dato de sistema" de "dato de negocio" sin leer.</li>
+    <li><strong>Azul marino + acento celeste = identidad de marca BAPS.</strong> El navy (#00133C) aparece solo en superficies de "marco" (sidebar, cabeceras de drawer, bloques de configuración/payload) — nunca como fondo de contenido — para que la marca enmarque la herramienta sin competir con los datos.</li>
+  </ul>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">2. Sistema visual</h2>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:14px 0 8px;">2.1 Paleta de color</h3>
+  <table class="doc-table" style="margin-bottom:6px;">
+    <thead><tr><th>Rol</th><th>Hex</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#00133C;margin-right:6px;vertical-align:middle;"></span>Navy (marco/marca)</td><td class="mono">#00133C</td><td>Sidebar, cabeceras de drawer, bloques de config/payload, franja de acciones del drawer</td></tr>
+      <tr><td><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#278AC5;margin-right:6px;vertical-align:middle;"></span>Azul acento</td><td class="mono">#278AC5</td><td>Enlaces, foco de inputs, estado "running/enrolado", botón primario del drawer de agente</td></tr>
+      <tr><td><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#002B86;margin-right:6px;vertical-align:middle;"></span>Azul profundo</td><td class="mono">#002B86</td><td>Códigos/IDs en mono dentro de tablas (agente, run), botones primarios de acción (crear, guardar)</td></tr>
+      <tr><td><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#EEF0F3;margin-right:6px;vertical-align:middle;border:1px solid #ddd;"></span>Fondo de app</td><td class="mono">#EEF0F3</td><td>Fondo general fuera de tarjetas</td></tr>
+      <tr><td><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#fff;margin-right:6px;vertical-align:middle;border:1px solid #ddd;"></span>Superficie</td><td class="mono">#FFFFFF</td><td>Tarjetas, tablas, topbar, inputs</td></tr>
+      <tr><td>Bordes</td><td class="mono">#E2E6EB / #EDEFF2</td><td>Bordes de tarjeta / separadores de fila</td></tr>
+      <tr><td>Texto primario</td><td class="mono">#152238 / #1B2733</td><td>Títulos, valores destacados</td></tr>
+      <tr><td>Texto secundario</td><td class="mono">#5A6472 / #6A727C / #8A929C</td><td>Metadatos, etiquetas, timestamps (tres niveles de énfasis decreciente)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px; color:#8A929C; margin:0 0 4px;">Los cinco colores de estado (verde, rojo, azul, ámbar, gris) se documentan aparte en la sección 4 — son un sistema cerrado, no se debe introducir un sexto color de estado sin actualizar esa tabla.</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">2.2 Tipografía</h3>
+  <table class="doc-table" style="margin-bottom:6px;">
+    <thead><tr><th>Familia</th><th>Uso</th><th>Regla</th></tr></thead>
+    <tbody>
+      <tr><td><strong>IBM Plex Sans</strong></td><td>Toda la UI: navegación, títulos, texto de cliente/acción/descripción, botones</td><td>Peso 500 para labels de nav y filas; 600–700 para títulos y valores numéricos destacados</td></tr>
+      <tr><td><strong>IBM Plex Mono</strong> <span class="mono" style="color:#8A929C;">(.mono)</span></td><td>Todo identificador o valor "de máquina": <span class="mono">AGT-000142</span>, <span class="mono">RUN-8842</span>, IPs, versiones, nombres técnicos de sync, JSON/config, payloads</td><td>Nunca usar mono para copy dirigido al humano (nombres de cliente, descripciones, mensajes operativos)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:#5A6472; margin:2px 0 0;">Escala tipográfica: 28px (KPI grande) · 22px (título de doc) · 16–20px (título de drawer / métrica de drawer) · 14–15px (títulos de sección, nombre de cliente) · 12.5–13.5px (cuerpo de tabla/formulario) · 11–11.5px (badges, metadatos, labels de campo) · 10–10.5px (kickers en mayúscula). No usar tamaños fuera de esta escala.</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">2.3 Componentes base</h3>
+  <table class="doc-table">
+    <thead><tr><th>Componente</th><th>Especificación</th></tr></thead>
+    <tbody>
+      <tr><td>Tarjeta</td><td>Fondo #fff, borde 1px #E2E6EB, radio 10px (9px en tarjetas anidadas dentro de drawer)</td></tr>
+      <tr><td>Badge de estado</td><td>Pill (radio 100px), punto de 5–6px + label; fondo/texto/punto vienen del sistema de estado (sección 4), nunca de un color inventado por vista</td></tr>
+      <tr><td>Botón primario</td><td>Fondo #002B86, texto blanco, radio 7px, hover #00227A</td></tr>
+      <tr><td>Botón secundario</td><td>Fondo blanco, borde #E2E6EB, texto #5A6472, hover fondo #F1F3F6</td></tr>
+      <tr><td>Chip de filtro</td><td>Activo: borde #278AC5 + fondo #E4F0FB + texto #1E6CA8. Inactivo: borde #E2E6EB + fondo blanco + texto #5A6472</td></tr>
+      <tr><td>Tabla</td><td>Encabezado #F7F8FA con texto #7A828D 11px uppercase; filas separadas por borde 1px #EDEFF2; hover de fila #F7FAFD si es clicable</td></tr>
+      <tr><td>Drawer (panel lateral)</td><td>560px de ancho, fondo #F4F6F8, cabecera navy #00133C con código/nombre + badge de estado + cierre; se abre desde la derecha sobre un scrim</td></tr>
+      <tr><td>Bloque de código/config</td><td>Fondo navy #00133C, texto verde menta #9FE0C0, mono, para "Configuración activa" y "Payload"</td></tr>
+      <tr><td>Aviso informativo</td><td>Fondo #EAF1F8, borde #C9DEF0, texto #1E4C7A, ícono de información — para contexto/ayuda inline, no para errores</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">2.4 Espaciado y forma</h3>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0;">
+    Radios: 6–7px en controles pequeños (botones, inputs, chips), 8–10px en contenedores (tarjetas, tablas, bloques), 100px en badges/pills (siempre círculo completo). Separación entre tarjetas y secciones: 14–18px. Padding interno de tarjeta: 13–16px. Padding de celda de tabla: 9–12px vertical / 16px horizontal. Estos valores son fijos — no introducir radios o espaciados intermedios nuevos.
+  </p>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">3. Arquitectura de la interfaz</h2>
+  <table class="doc-table">
+    <thead><tr><th>Zona</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sidebar</strong> (242px, navy)</td><td>Navegación fija por secciones: Operación (Dashboard, Agentes ▸ Listado/Asignación, Ejecuciones, Auditoría) y Configuración (Clientes, Catálogo). El grupo "Agentes" es expandible. Colapsa a off-canvas en &lt;860px con botón hamburguesa.</td></tr>
+      <tr><td><strong>Topbar</strong> (56px, blanco)</td><td>Título + subtítulo de la vista activa, buscador global, indicador de entorno (PROD, pulso verde) y botón de refresco.</td></tr>
+      <tr><td><strong>Contenido</strong></td><td>Cada vista sigue el mismo patrón: barra de filtros (buscador + chips de estado + contador) → superficie de datos (tabla o grilla de tarjetas). El Dashboard es la excepción: strip de métricas + 4 paneles resumen en grilla 2 columnas.</td></tr>
+      <tr><td><strong>Drawer</strong></td><td>Panel de detalle/acción que se abre desde la derecha para: detalle de agente, detalle de ejecución, detalle de cliente, alta de catálogo. Nunca hay dos drawers abiertos a la vez; abrir uno reemplaza el anterior.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:#5A6472; margin:8px 0 0;">Regla de extensión: toda vista nueva de listado debe reutilizar la barra de filtros + tabla (o grilla de tarjetas si el registro es "rico", como Clientes/Catálogo/Asignación) — no inventar un layout distinto para listar datos.</p>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">4. Sistema de estado (crítico para backend)</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:0 0 10px;">
+    Todo campo de estado en la interfaz (agente, ejecución, comando, sincronizador, cliente) se resuelve contra <strong>una única tabla de estilos</strong>, no contra reglas por vista. El backend no necesita enviar colores: <strong>envía el nombre del estado (string) y el frontend resuelve fondo/texto/punto</strong>. Esto es lo más importante a preservar — agregar un estado nuevo sin agregarlo aquí romperá el badge (cae a "Deshabilitado" gris por defecto).
+  </p>
+  <table class="doc-table">
+    <thead><tr><th>Clave (string)</th><th>Label mostrado</th><th>Color</th><th>Dónde se usa</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">online</td><td>Online</td><td>Verde</td><td>Agente conectado y reportando heartbeat</td></tr>
+      <tr><td class="mono">offline</td><td>Offline</td><td>Rojo</td><td>Agente sin heartbeat reciente</td></tr>
+      <tr><td class="mono">enrolled</td><td>Enrolado</td><td>Azul</td><td>Agente instalado pero aún sin actividad</td></tr>
+      <tr><td class="mono">disabled</td><td>Deshabilitado</td><td>Gris</td><td>Agente o sync desactivado manualmente / estado por defecto</td></tr>
+      <tr><td class="mono">success</td><td>Success</td><td>Verde</td><td>Ejecución completada sin errores</td></tr>
+      <tr><td class="mono">running</td><td>Running</td><td>Azul</td><td>Ejecución en curso</td></tr>
+      <tr><td class="mono">failed</td><td>Failed</td><td>Rojo</td><td>Ejecución con error</td></tr>
+      <tr><td class="mono">skipped</td><td>Skipped</td><td>Ámbar</td><td>Ejecución omitida (ej. sync ya corriendo)</td></tr>
+      <tr><td class="mono">pending</td><td>Pending</td><td>Ámbar</td><td>Comando enviado, esperando confirmación del agente</td></tr>
+      <tr><td class="mono">completed</td><td>Completado</td><td>Verde</td><td>Comando ejecutado con éxito</td></tr>
+      <tr><td class="mono">expired</td><td>Expirado</td><td>Gris</td><td>Comando sin respuesta antes de su vencimiento</td></tr>
+      <tr><td class="mono">enabled</td><td>Habilitado</td><td>Verde</td><td>Sincronizador activo en el catálogo/asignación</td></tr>
+      <tr><td class="mono">paused</td><td>Pausado</td><td>Ámbar</td><td>Sincronizador pausado manualmente</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px; color:#8A929C; margin:8px 0 0;">
+    Verde=#22A366/#E3F3EA/#1B7A4B · Rojo=#D64B40/#FBE6E4/#B23A31 · Azul=#278AC5/#E4F0FB/#1E6CA8 · Ámbar=#F6921E/#FDEED8/#B26914 · Gris=#9AA0A7/#ECEDEF/#6A6E75 (punto / fondo / texto).
+  </p>
+  <p style="font-size:12px; color:#5A6472; margin:8px 0 0;"><strong>Para el backend:</strong> cualquier endpoint que devuelva un agente, ejecución, comando o sincronizador debe usar exactamente una de estas claves en su campo de estado. Si se necesita un estado nuevo (ej. "reintentando"), debe acordarse con diseño el color semántico (¿es éxito, falla, en curso, neutro o atención?) antes de implementarlo, para mantener el significado de color consistente en toda la app.
+  </p>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 4px; padding-bottom:6px; border-bottom:2px solid #00133C;">5. Contrato de datos por vista</h2>
+  <p style="font-size:12.5px; color:#5A6472; line-height:1.6; margin:8px 0 14px;">Campos que cada vista consume tal como está maquetada hoy con datos de ejemplo. Los campos <span class="mono">status</span> deben venir en las claves de la sección 4; el resto de campos de color/label (statusBg, statusLabel, etc.) los calcula el frontend — el backend solo entrega el dato crudo.</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:14px 0 8px;">5.1 Agente</h3>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">code</td><td>string</td><td>Ej. <span class="mono">AGT-000142</span>. Identificador visible, mono, en azul #002B86</td></tr>
+      <tr><td class="mono">client</td><td>string</td><td>Nombre del cliente/negocio</td></tr>
+      <tr><td class="mono">machine</td><td>string</td><td>Hostname de la máquina donde corre el agente</td></tr>
+      <tr><td class="mono">version</td><td>string (semver)</td><td>Versión instalada del agente</td></tr>
+      <tr><td class="mono">status</td><td>enum</td><td>online · offline · enrolled · disabled</td></tr>
+      <tr><td class="mono">heartbeat</td><td>string</td><td>Texto relativo ("hace 12 s"). El backend puede enviar timestamp y el frontend formatea, o enviar ya formateado — a decidir con backend</td></tr>
+      <tr><td class="mono">ip</td><td>string</td><td>Última IP reportada</td></tr>
+      <tr><td class="mono">syncs</td><td>int</td><td>Cantidad de sincronizadores autorizados/activos</td></tr>
+      <tr><td class="mono">lastError</td><td>string | "—"</td><td>Código de error técnico o guion si no hay</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">5.2 Ejecución (run)</h3>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">id</td><td>string</td><td>Ej. <span class="mono">RUN-8842</span></td></tr>
+      <tr><td class="mono">client, agent, sync</td><td>string</td><td>Referencias legibles al cliente, agente y código de sync ejecutado</td></tr>
+      <tr><td class="mono">status</td><td>enum</td><td>success · running · failed · skipped</td></tr>
+      <tr><td class="mono">trigger</td><td>enum</td><td>schedule · manual · command</td></tr>
+      <tr><td class="mono">start, end</td><td>string (hora)</td><td>"—" si aún no termina</td></tr>
+      <tr><td class="mono">duration</td><td>string</td><td>Formateada (ej. "8.2 s"); running = "—"</td></tr>
+      <tr><td class="mono">rows, ins, upd, fail</td><td>int</td><td>Filas leídas / insertadas / actualizadas / fallidas</td></tr>
+      <tr><td class="mono">error</td><td>string | "—"</td><td>Código técnico de error si status=failed/skipped</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:#5A6472; margin:6px 0 0;">El drawer de ejecución además necesita, cuando hay error: <span class="mono">errCode</span>, <span class="mono">retryLabel/status</span> (para el badge "reintentable"), <span class="mono">opMsg</span> (mensaje en lenguaje operativo), <span class="mono">techMsg</span> (detalle técnico/stack), <span class="mono">action</span> (acción sugerida en texto) y <span class="mono">correlation</span> (correlation ID). También un <span class="mono">timeline</span>: lista ordenada de eventos con <span class="mono">ev, detail, at, tone</span> (color del punto).</p>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">5.3 Evento de auditoría</h3>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">id</td><td>string</td><td>ID del evento</td></tr>
+      <tr><td class="mono">catLabel</td><td>enum</td><td>Categoría corta (2–3 letras): comando, evento, error, acceso — define el color del ícono</td></tr>
+      <tr><td class="mono">action</td><td>string</td><td>Descripción en lenguaje humano ("Reinició sincronizador")</td></tr>
+      <tr><td class="mono">actor</td><td>string</td><td>Usuario o sistema que originó el evento</td></tr>
+      <tr><td class="mono">target</td><td>string</td><td>Entidad afectada (código de agente/sync), mono</td></tr>
+      <tr><td class="mono">ctx</td><td>string</td><td>Contexto técnico adicional, mono</td></tr>
+      <tr><td class="mono">result</td><td>string</td><td>Resultado en texto</td></tr>
+      <tr><td class="mono">at</td><td>string (timestamp)</td><td>Momento del evento</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">5.4 Cliente</h3>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">name, system</td><td>string</td><td>Nombre del cliente y sistema administrativo que usa</td></tr>
+      <tr><td class="mono">healthLabel/status</td><td>enum</td><td>Salud general del cliente (mismo set de estados)</td></tr>
+      <tr><td class="mono">agents, syncs</td><td>int</td><td>Conteos mostrados como KPI en la tarjeta</td></tr>
+      <tr><td class="mono">lastSync</td><td>string</td><td>Fecha/hora de la última sincronización</td></tr>
+      <tr><td class="mono">errBadge</td><td>int | null</td><td>Cantidad de errores abiertos; si es 0/null no se muestra el badge</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:13px; font-weight:600; color:#152238; margin:18px 0 8px;">5.5 Sincronizador (catálogo / asignación)</h3>
+  <table class="doc-table">
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">name, code</td><td>string</td><td>Nombre legible y código técnico</td></tr>
+      <tr><td class="mono">desc</td><td>string</td><td>Descripción funcional corta</td></tr>
+      <tr><td class="mono">minVersion</td><td>string (semver)</td><td>Versión mínima de agente requerida</td></tr>
+      <tr><td class="mono">key</td><td>string</td><td>Clave funcional/técnica del sync</td></tr>
+      <tr><td class="mono">status</td><td>enum</td><td>enabled · disabled (catálogo) / enabled · paused (asignación por agente)</td></tr>
+      <tr><td class="mono">interval</td><td>string</td><td>Frecuencia de ejecución ("cada 15 min")</td></tr>
+    </tbody>
+  </table>
+
+  <div style="break-before: page;"></div>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:0 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">6. Patrones de interacción</h2>
+  <table class="doc-table">
+    <thead><tr><th>Patrón</th><th>Comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td>Fila/tarjeta clicable</td><td>Cursor pointer + fondo hover #F7FAFD (tablas) o borde azul (tarjetas) → abre el drawer de detalle correspondiente</td></tr>
+      <tr><td>Filtro por chip</td><td>Un solo chip activo a la vez (estilo "segmented"); no son checkboxes múltiples</td></tr>
+      <tr><td>Grupo expandible</td><td>Chevron que rota 180° con transición de 0.18s (nav "Agentes", grupos de catálogo)</td></tr>
+      <tr><td>Refresco</td><td>Ícono gira 0.9s al hacer clic; usar el mismo patrón para cualquier acción de "sincronizar ahora"</td></tr>
+      <tr><td>Flujo de 2 pasos (Asignación)</td><td>Paso 0: grilla de selección de agente. Paso 1: tabla de permisos con botón "Cambiar agente" para volver. No colapsar en un solo paso.</td></tr>
+      <tr><td>Errores</td><td>Siempre en dos niveles: mensaje operativo (para soporte) + mensaje técnico en mono (para desarrollo), más un bloque "Acción sugerida" en azul informativo</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size:15px; font-weight:700; color:#152238; margin:24px 0 10px; padding-bottom:6px; border-bottom:2px solid #00133C;">7. Cómo mantener el patrón al agregar pantallas</h2>
+  <ul style="font-size:12.5px; color:#33404F; line-height:1.8; margin:8px 0 0; padding-left:18px;">
+    <li>Nueva entidad con estado → agregarla a la tabla única de estados (sección 4); nunca definir un color de badge dentro de la vista.</li>
+    <li>Nuevo campo técnico (ID, código, versión, IP, JSON) → tipografía mono, color #5A6472 o #002B86 si es el identificador principal de la fila.</li>
+    <li>Nueva vista de listado → barra de filtros (buscador + chips + contador a la derecha) seguida de tabla o grilla de tarjetas; no introducir un layout de filtros distinto.</li>
+    <li>Nuevo detalle → drawer de 560px con cabecera navy, nunca modal centrado ni página nueva.</li>
+    <li>Nuevo color → solo si es realmente un color de marca o de estado; en ambos casos derivarlo por oklch de la paleta existente y documentarlo aquí antes de usarlo en código.</li>
+  </ul>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-top:28px; padding-top:10px; border-top:1px solid #E2E6EB; font-size:10.5px; color:#8A929C;">
+    <span>Uso interno — Equipo de producto y desarrollo</span>
+    <span>BAPPS Sync · v1.0 · Julio 2026</span>
+  </div>
+
+</x-import>
+
+</x-dc>
+</body>
+</html>

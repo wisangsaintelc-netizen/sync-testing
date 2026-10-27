@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAPPS Sync Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "agent_code",
+    "occurred_at",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "agent_started",
+        "heartbeat",
+        "run_started",
+        "run_finished",
+        "sync_error",
+        "command_claimed",
+        "command_completed",
+        "config_applied",
+        "outbox_warning"
+      ]
+    },
+    "agent_code": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "correlation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sync_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

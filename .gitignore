@@ -1,0 +1,83 @@
+# ======================
+# OS & Editor
+# ======================
+*.log
+.DS_Store
+Thumbs.db
+.phpactor.json
+.phpunit.result.cache
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+
+# IDE / Editor directories
+/.codex
+/.cursor/
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/.claude/
+
+# ======================
+# Environment & secrets
+# ======================
+.env
+.env.backup
+.env.production
+/auth.json
+
+# ======================
+# Laravel / PHP
+# ======================
+/vendor
+/node_modules
+/public/build
+/public/fonts-manifest.dev.json
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+
+# ======================
+# Python Agent – generated artifacts
+# ======================
+# Virtual environment
+/agent/.venv/
+
+# PyInstaller output
+/agent/build/
+/agent/dist/
+
+# Release binaries (installers & ZIPs)
+/agent/release/
+
+# Egg-info metadata
+/agent/src/bapps_sync_agent.egg-info/
+
+# NSIS toolkit (downloadable, not source)
+/agent/tools/nsis*/
+
+# Python bytecode (global)
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ======================
+# Temp / build tools
+# ======================
+/.tmp/
+
+# ======================
+# Docs – legacy binaries & build artifacts
+# ======================
+# Legacy Profit sync pack (~370MB of .exe, build/, dist/)
+# Only reference material, not project source code
+/docs/backend-design/BAPPS_Sync_Development_Pack_v1.1/Sync_Lectura_Legacy_Profit_Coloreal/
+
+# Agent tools ZIP
+/agent/tools/*.zip
+
+# Docs zip archives
+/docs/**/*.zip

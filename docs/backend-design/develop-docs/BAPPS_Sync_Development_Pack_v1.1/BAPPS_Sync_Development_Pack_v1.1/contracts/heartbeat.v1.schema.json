@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAPPS Sync Heartbeat v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "agent_code",
+    "agent_version",
+    "config_version",
+    "machine_name",
+    "status",
+    "running_runs",
+    "outbox"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "agent_code": {
+      "type": "string"
+    },
+    "agent_version": {
+      "type": "string"
+    },
+    "config_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "machine_name": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "online"
+      ]
+    },
+    "running_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "sync_code",
+          "status",
+          "started_at"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "sync_code": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "running",
+              "stopping"
+            ]
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "outbox": {
+      "type": "object",
+      "required": [
+        "pending_count",
+        "pending_bytes"
+      ],
+      "properties": {
+        "pending_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

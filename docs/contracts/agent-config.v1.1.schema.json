@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BAPPS Sync Agent Config v1.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "version", "agent_code", "syncs"],
+  "properties": {
+    "schema_version": {"const": "1.1"},
+    "version": {"type": "integer", "minimum": 1},
+    "agent_code": {"type": "string"},
+    "syncs": {"type": "array"},
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bapps_mysql": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["host", "port", "database", "username", "password", "configured_at"],
+          "properties": {
+            "host": {"type": "string"},
+            "port": {"type": "integer", "minimum": 1, "maximum": 65535},
+            "database": {"type": "string"},
+            "username": {"type": "string"},
+            "password": {"type": "string"},
+            "configured_at": {"type": ["string", "null"], "format": "date-time"}
+          }
+        }
+      }
+    }
+  }
+}
